@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expresión Oral y Escrita — Práctica de Examen</title>
+<style>
+:root {
+  --purple: #7F77DD; --purple-light: #EEEDFE; --purple-dark: #3C3489;
+  --teal: #1D9E75; --teal-light: #E1F5EE; --teal-dark: #085041;
+  --coral: #D85A30; --coral-light: #FAECE7; --coral-dark: #712B13;
+  --blue: #378ADD; --blue-light: #E6F1FB; --blue-dark: #0C447C;
+  --amber: #BA7517; --amber-light: #FAEEDA; --amber-dark: #633806;
+  --green: #639922; --green-light: #EAF3DE; --green-dark: #27500A;
+  --gray: #888780; --gray-light: #F1EFE8; --gray-dark: #444441;
+  --red: #E24B4A; --red-light: #FCEBEB; --red-dark: #791F1F;
+  --bg: #ffffff; --bg2: #f8f7f4; --text: #1a1a1a; --text2: #5a5a5a; --border: #e0ddd5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg2); color: var(--text); min-height: 100vh; }
+.app-header { background: var(--purple-dark); color: #fff; padding: 1.5rem 2rem; }
+.app-header h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+.app-header p { font-size: 0.85rem; opacity: 0.75; margin-top: 4px; font-family: sans-serif; }
+.nav { display: flex; gap: 4px; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 2rem; flex-wrap: wrap; }
+.nav-btn { font-family: sans-serif; font-size: 0.82rem; padding: 0.7rem 1rem; border: none; background: none; cursor: pointer; color: var(--text2); border-bottom: 2.5px solid transparent; transition: all 0.15s; white-space: nowrap; }
+.nav-btn:hover { color: var(--text); background: var(--bg2); }
+.nav-btn.active { color: var(--purple-dark); border-bottom-color: var(--purple); font-weight: 600; }
+.section { display: none; padding: 2rem; max-width: 900px; margin: 0 auto; }
+.section.active { display: block; }
+h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.25rem; color: var(--purple-dark); font-family: sans-serif; }
+h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; font-family: sans-serif; color: var(--text); }
+
+/* Cards */
+.card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+.card-accent-purple { border-left: 4px solid var(--purple); }
+.card-accent-teal { border-left: 4px solid var(--teal); }
+.card-accent-coral { border-left: 4px solid var(--coral); }
+.card-accent-blue { border-left: 4px solid var(--blue); }
+.card-accent-amber { border-left: 4px solid var(--amber); }
+.badge { display: inline-block; font-size: 0.72rem; padding: 2px 8px; border-radius: 20px; font-family: sans-serif; font-weight: 600; margin-bottom: 6px; }
+.badge-purple { background: var(--purple-light); color: var(--purple-dark); }
+.badge-teal { background: var(--teal-light); color: var(--teal-dark); }
+.badge-coral { background: var(--coral-light); color: var(--coral-dark); }
+.badge-amber { background: var(--amber-light); color: var(--amber-dark); }
+.badge-blue { background: var(--blue-light); color: var(--blue-dark); }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 0.84rem; margin-bottom: 1rem; }
+th { background: var(--gray-light); padding: 8px 10px; text-align: left; font-weight: 600; color: var(--gray-dark); border-bottom: 1px solid var(--border); }
+td { padding: 7px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg2); }
+
+/* Quiz elements */
+.quiz-btn { font-family: sans-serif; font-size: 0.88rem; padding: 0.5rem 1.25rem; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; background: var(--bg); transition: all 0.15s; }
+.quiz-btn:hover { background: var(--purple-light); border-color: var(--purple); }
+.quiz-btn.correct { background: var(--green-light); border-color: var(--green); color: var(--green-dark); font-weight: 600; }
+.quiz-btn.wrong { background: var(--red-light); border-color: var(--red); color: var(--red-dark); }
+.quiz-btn.reveal { background: var(--amber-light); border-color: var(--amber); color: var(--amber-dark); }
+.btn-primary { background: var(--purple); color: #fff; border: none; padding: 0.55rem 1.5rem; border-radius: 8px; cursor: pointer; font-family: sans-serif; font-size: 0.88rem; font-weight: 600; }
+.btn-primary:hover { background: var(--purple-dark); }
+.btn-secondary { background: var(--bg); color: var(--purple-dark); border: 1px solid var(--purple); padding: 0.5rem 1.2rem; border-radius: 8px; cursor: pointer; font-family: sans-serif; font-size: 0.84rem; }
+.btn-secondary:hover { background: var(--purple-light); }
+.feedback { font-family: sans-serif; font-size: 0.84rem; padding: 8px 12px; border-radius: 6px; margin-top: 8px; }
+.feedback.correct { background: var(--green-light); color: var(--green-dark); }
+.feedback.wrong { background: var(--red-light); color: var(--red-dark); }
+.score-bar { background: var(--gray-light); border-radius: 20px; height: 10px; overflow: hidden; margin: 8px 0; }
+.score-fill { background: var(--purple); height: 100%; border-radius: 20px; transition: width 0.4s; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+@media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+input[type=text] { font-family: sans-serif; font-size: 0.88rem; padding: 7px 10px; border: 1px solid var(--border); border-radius: 6px; width: 100%; background: var(--bg); color: var(--text); }
+input[type=text]:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 2px var(--purple-light); }
+.word-pill { display: inline-block; background: var(--purple-light); color: var(--purple-dark); padding: 4px 10px; border-radius: 20px; font-family: sans-serif; font-size: 0.82rem; font-weight: 600; margin: 3px; cursor: pointer; transition: all 0.15s; border: 1.5px solid transparent; }
+.word-pill:hover { border-color: var(--purple); }
+.word-pill.selected { background: var(--purple); color: #fff; }
+.word-pill.matched { background: var(--green-light); color: var(--green-dark); border-color: var(--green); cursor: default; }
+.word-pill.error { background: var(--red-light); color: var(--red-dark); border-color: var(--red); }
+.pair-slot { background: var(--bg); border: 1.5px dashed var(--border); border-radius: 8px; padding: 10px; min-height: 42px; font-family: sans-serif; font-size: 0.84rem; display: flex; align-items: center; gap: 6px; }
+.pair-slot.filled { background: var(--teal-light); border-color: var(--teal); color: var(--teal-dark); font-weight: 600; border-style: solid; }
+.pair-slot.error { background: var(--red-light); border-color: var(--red); color: var(--red-dark); }
+.divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+.tip-box { background: var(--amber-light); border-left: 4px solid var(--amber); border-radius: 0 8px 8px 0; padding: 10px 14px; font-family: sans-serif; font-size: 0.84rem; color: var(--amber-dark); margin: 1rem 0; }
+.rule-box { background: var(--blue-light); border-left: 4px solid var(--blue); border-radius: 0 8px 8px 0; padding: 10px 14px; font-family: sans-serif; font-size: 0.84rem; color: var(--blue-dark); margin: 1rem 0; }
+.stats-row { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.stat-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 0.75rem 1rem; text-align: center; flex: 1; min-width: 80px; }
+.stat-card .n { font-size: 1.6rem; font-weight: 700; color: var(--purple-dark); font-family: sans-serif; }
+.stat-card .l { font-size: 0.72rem; color: var(--text2); font-family: sans-serif; margin-top: 2px; }
+.hidden { display: none; }
+.tilde-highlight { background: var(--amber); color: #fff; padding: 1px 3px; border-radius: 3px; font-weight: bold; }
+.exam-text { font-size: 0.95rem; line-height: 1.85; letter-spacing: 0.01em; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
+.exam-text .blank { display: inline-block; border-bottom: 2px solid var(--purple); min-width: 30px; text-align: center; cursor: pointer; color: var(--purple); font-weight: bold; }
+.exam-text .blank.correct { color: var(--green-dark); border-color: var(--green); }
+.exam-text .blank.wrong { color: var(--red-dark); border-color: var(--red); }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>Expresión Oral y Escrita</h1>
+  <p>Guía de estudio y práctica de examen — UNIBE</p>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="showSection('tildes')">📝 Tildes</button>
+  <button class="nav-btn" onclick="showSection('diptongo')">🔤 Diptongo / Hiato</button>
+  <button class="nav-btn" onclick="showSection('homofonos')">🔄 Homófonos</button>
+  <button class="nav-btn" onclick="showSection('paronimos')">📖 Parónimos</button>
+  <button class="nav-btn" onclick="showSection('sinonimos')">🟰 Sinónimos</button>
+  <button class="nav-btn" onclick="showSection('antonimos')">⟷ Antónimos</button>
+  <button class="nav-btn" onclick="showSection('comunicacion')">💬 Comunicación</button>
+  <button class="nav-btn" onclick="showSection('practica')">🎯 Práctica Examen</button>
+</nav>
+
+<!-- ══════════════════ TILDES ══════════════════ -->
+<section id="tildes" class="section active">
+  <h2>El Acento y la Tilde</h2>
+
+  <div class="grid2">
+    <div class="card card-accent-purple">
+      <span class="badge badge-purple">Definiciones clave</span>
+      <table>
+        <tr><td><strong>Acento prosódico</strong></td><td>Mayor relieve al pronunciar una sílaba</td></tr>
+        <tr><td><strong>Tilde (´)</strong></td><td>Rayita oblicua sobre vocal tónica</td></tr>
+        <tr><td><strong>Sílaba tónica</strong></td><td>Donde recae el acento prosódico</td></tr>
+        <tr><td><strong>Sílaba átona</strong></td><td>No lleva acento</td></tr>
+      </table>
+    </div>
+    <div class="card card-accent-amber">
+      <span class="badge badge-amber">⚡ Regla de oro</span>
+      <p style="font-family:sans-serif;font-size:0.9rem;line-height:1.6;">El español tiene acento <strong>libre</strong>: puede caer en cualquiera de las <strong>3 últimas sílabas</strong> de la palabra.</p>
+      <br>
+      <div class="tip-box">Las tildes NUNCA se ponen "al azar" — siempre hay una regla detrás.</div>
+    </div>
+  </div>
+
+  <h3>Clasificación según el acento</h3>
+  <table>
+    <thead><tr><th>Tipo</th><th>Acento en…</th><th>Lleva tilde si…</th><th>Ejemplos</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Aguda</strong></td>
+        <td>Última sílaba</td>
+        <td>Termina en <strong>vocal</strong>, <strong>-n</strong> o <strong>-s</strong> solos</td>
+        <td>tam<span class="tilde-highlight">bién</span>, ja<span class="tilde-highlight">más</span>, lec<span class="tilde-highlight">ción</span>, se<span class="tilde-highlight">gún</span></td>
+      </tr>
+      <tr>
+        <td style="color:var(--gray-dark)">Aguda (sin tilde)</td>
+        <td>Última sílaba</td>
+        <td>Termina en consonante ≠ n/s</td>
+        <td>vir-tud, re-loj, fe-liz</td>
+      </tr>
+      <tr>
+        <td><strong>Grave / Llana</strong></td>
+        <td>Penúltima sílaba</td>
+        <td>Termina en consonante ≠ n/s (incluye varias consonantes)</td>
+        <td>di-f<span class="tilde-highlight">í</span>-cil, c<span class="tilde-highlight">á</span>r-cel, b<span class="tilde-highlight">í</span>-ceps</td>
+      </tr>
+      <tr>
+        <td style="color:var(--gray-dark)">Grave (sin tilde)</td>
+        <td>Penúltima sílaba</td>
+        <td>Termina en vocal, -n o -s</td>
+        <td>li-bro, me-dios, mo-do</td>
+      </tr>
+      <tr>
+        <td><strong>Esdrújula</strong></td>
+        <td>Antepenúltima sílaba</td>
+        <td><strong>SIEMPRE</strong></td>
+        <td>pr<span class="tilde-highlight">é</span>s-ta-mo, cr<span class="tilde-highlight">é</span>-di-to</td>
+      </tr>
+      <tr>
+        <td><strong>Sobreesdrújula</strong></td>
+        <td>Antes de la antepenúltima</td>
+        <td><strong>SIEMPRE</strong> (verbo + 2 pronombres)</td>
+        <td>c<span class="tilde-highlight">ó</span>-me-te-lo, cu<span class="tilde-highlight">é</span>n-ta-se-lo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Tilde Diacrítica</h3>
+  <div class="rule-box">Distingue palabras idénticas en escritura pero con <strong>significados distintos</strong>.</div>
+  <table>
+    <thead><tr><th>Con tilde</th><th>Función / Ejemplo</th><th>Sin tilde</th><th>Función / Ejemplo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>más</strong></td><td>Adverbio: Quiero <em>más</em> comida.</td><td><strong>mas</strong></td><td>Conjunción (pero): Le pagan, <em>mas</em> no es suficiente.</td></tr>
+      <tr><td><strong>tú</strong></td><td>Pronombre: Ven <em>tú</em> primero.</td><td><strong>tu</strong></td><td>Posesivo: Dale <em>tu</em> libro.</td></tr>
+      <tr><td><strong>él</strong></td><td>Pronombre: ¿Estuviste con <em>él</em>?</td><td><strong>el</strong></td><td>Artículo: <em>El</em> vino está bueno.</td></tr>
+      <tr><td><strong>mí</strong></td><td>Pronombre: Esto es para <em>mí</em>.</td><td><strong>mi</strong></td><td>Posesivo: Trae <em>mi</em> libro.</td></tr>
+      <tr><td><strong>sí</strong></td><td>Afirm./reflexivo: Él <em>sí</em> quería.</td><td><strong>si</strong></td><td>Condicional: Vendrá <em>si</em> quiero.</td></tr>
+      <tr><td><strong>dé</strong></td><td>Verbo dar: <em>Dé</em> ese dinero.</td><td><strong>de</strong></td><td>Preposición: Vengo <em>de</em> casa.</td></tr>
+      <tr><td><strong>sé</strong></td><td>Ser/saber: Yo no <em>sé</em> nada.</td><td><strong>se</strong></td><td>Pronombre: <em>Se</em> fue tarde.</td></tr>
+      <tr><td><strong>té</strong></td><td>Bebida: Póngame un <em>té</em>.</td><td><strong>te</strong></td><td>Pronombre: <em>Te</em> voy a dar.</td></tr>
+      <tr><td><strong>aún</strong></td><td>Todavía: ¿<em>Aún</em> no ha llegado?</td><td><strong>aun</strong></td><td>Incluso: Ni <em>aun</em> él pudo.</td></tr>
+      <tr><td><strong>qué, cómo, cuál, quién, dónde, cuándo, cuánto</strong></td><td>Interrogativos/exclamativos</td><td><strong>que, como, cual…</strong></td><td>Relativos / conjunciones</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Palabras del examen (Práctica #1)</h3>
+  <div id="palabras-examen-quiz"></div>
+
+  <h3 style="margin-top:1.5rem">Palabras del examen (Práctica #2)</h3>
+  <div id="palabras-examen2-quiz"></div>
+</section>
+
+<!-- ══════════════════ DIPTONGO / HIATO ══════════════════ -->
+<section id="diptongo" class="section">
+  <h2>Diptongo, Triptongo e Hiato</h2>
+
+  <div class="grid3">
+    <div class="card card-accent-purple">
+      <span class="badge badge-purple">Diptongo</span>
+      <p style="font-family:sans-serif;font-size:0.85rem;line-height:1.6;"><strong>2 vocales</strong> en la misma sílaba. Combina:</p>
+      <ul style="font-family:sans-serif;font-size:0.83rem;padding-left:1rem;margin-top:6px;line-height:1.8">
+        <li>Fuerte + débil átona: ai-re, cau-sa</li>
+        <li>Débil átona + fuerte: cie-lo, fue-go</li>
+        <li>Débil + débil: ciu-dad, viu-da</li>
+      </ul>
+    </div>
+    <div class="card card-accent-teal">
+      <span class="badge badge-teal">Triptongo</span>
+      <p style="font-family:sans-serif;font-size:0.85rem;line-height:1.6;"><strong>3 vocales</strong> en la misma sílaba.<br>Fórmula: <strong>débil + fuerte + débil</strong></p>
+      <ul style="font-family:sans-serif;font-size:0.83rem;padding-left:1rem;margin-top:6px;line-height:1.8">
+        <li>buey (1 sílaba)</li>
+        <li>miau, Pa-ra-guay (guay)</li>
+        <li>a-ve-ri-guáis</li>
+      </ul>
+    </div>
+    <div class="card card-accent-coral">
+      <span class="badge badge-coral">Hiato</span>
+      <p style="font-family:sans-serif;font-size:0.85rem;line-height:1.6;">2 vocales en <strong>sílabas separadas</strong>:</p>
+      <ul style="font-family:sans-serif;font-size:0.83rem;padding-left:1rem;margin-top:6px;line-height:1.8">
+        <li>2 vocales fuertes: te-a-tro</li>
+        <li>Débil TÓNICA + fuerte: pa-ís</li>
+        <li>Fuerte + débil TÓNICA: ba-úl</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background:var(--coral-light);border:1.5px solid var(--coral);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;">
+    <span class="badge badge-coral">⚠️ Ley del Hiato — ¡Muy importante!</span>
+    <p style="font-family:sans-serif;font-size:0.9rem;margin-top:6px;line-height:1.7;color:var(--coral-dark);">
+      Cuando una vocal <strong>débil (i, u)</strong> es <strong>tónica</strong> y está junto a una vocal fuerte (a, e, o), <strong>SIEMPRE lleva tilde</strong>, aunque las reglas generales no lo indiquen. Sirve para romper el diptongo y señalar que se pronuncian en sílabas separadas.
+    </p>
+  </div>
+
+  <table>
+    <thead><tr><th>Palabra</th><th>Separación silábica</th><th>¿Por qué lleva tilde?</th></tr></thead>
+    <tbody>
+      <tr><td>país</td><td>pa-<strong>ís</strong></td><td>Hiato: 'i' débil tónica + 'a' fuerte → ley del hiato</td></tr>
+      <tr><td>María</td><td>Ma-r<strong>í</strong>-a</td><td>Hiato: 'i' débil tónica + 'a' fuerte → ley del hiato</td></tr>
+      <tr><td>baúl</td><td>ba-<strong>úl</strong></td><td>Hiato: 'u' débil tónica + 'a' fuerte → ley del hiato</td></tr>
+      <tr><td>abstraído</td><td>abs-tra-<strong>í</strong>-do</td><td>Hiato: 'i' débil tónica rompe diptongo</td></tr>
+      <tr><td>teatro</td><td>te-a-tro</td><td>Hiato de dos fuertes (e+a) → sin tilde (no hay débil tónica)</td></tr>
+      <tr><td>fluir</td><td>flu-ir</td><td>Diptongo 'ui'; termina en -r → aguda sin tilde</td></tr>
+      <tr><td>continúe</td><td>con-ti-n<strong>úe</strong></td><td>Hiato: 'u' débil tónica → ley del hiato</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+  <h3>Quiz: ¿Diptongo, Triptongo o Hiato?</h3>
+  <div id="diptongo-quiz"></div>
+</section>
+
+<!-- ══════════════════ HOMÓFONOS ══════════════════ -->
+<section id="homofonos" class="section">
+  <h2>Homófonos</h2>
+  <div class="rule-box">Palabras que <strong>suenan igual</strong>, se escriben <strong>distinto</strong> y tienen <strong>distinto significado</strong>.</div>
+
+  <div id="homofonos-tabs" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem;">
+    <button class="btn-secondary" onclick="showHomofonoGroup('bv')" id="tab-bv" style="font-size:0.8rem">B / V</button>
+    <button class="btn-secondary" onclick="showHomofonoGroup('cs')" id="tab-cs" style="font-size:0.8rem">C / S</button>
+    <button class="btn-secondary" onclick="showHomofonoGroup('sz')" id="tab-sz" style="font-size:0.8rem">S / Z</button>
+    <button class="btn-secondary" onclick="showHomofonoGroup('yll')" id="tab-yll" style="font-size:0.8rem">Y / LL</button>
+    <button class="btn-secondary" onclick="showHomofonoGroup('h')" id="tab-h" style="font-size:0.8rem">H / sin H</button>
+  </div>
+
+  <div id="homo-bv">
+    <table>
+      <thead><tr><th>Palabra</th><th>Significado + Oración</th><th>Palabra</th><th>Significado + Oración</th></tr></thead>
+      <tbody>
+        <tr><td><strong>barón</strong></td><td>Título de dignidad → <em>El barón presidió la ceremonia.</em></td><td><strong>varón</strong></td><td>Hombre → <em>Ese varón es muy valiente.</em></td></tr>
+        <tr><td><strong>bello</strong></td><td>Hermoso → <em>El paisaje era bello.</em></td><td><strong>vello</strong></td><td>Pelo fino → <em>Le salió vello en los brazos.</em></td></tr>
+        <tr><td><strong>botar</strong></td><td>Arrojar → <em>No botes la basura.</em></td><td><strong>votar</strong></td><td>Dar el voto → <em>Fui a votar en las elecciones.</em></td></tr>
+        <tr><td><strong>sabia</strong></td><td>Con sabiduría → <em>La científica era muy sabia.</em></td><td><strong>savia</strong></td><td>Jugo de planta → <em>La savia del árbol cayó al suelo.</em></td></tr>
+        <tr><td><strong>bacilo</strong></td><td>Microbio → <em>El bacilo causó la infección.</em></td><td><strong>vacilo</strong></td><td>Verbo vacilar → <em>No vacilo en decir la verdad.</em></td></tr>
+        <tr><td><strong>rebelar</strong></td><td>Sublevar → <em>El pueblo quiso rebelarse.</em></td><td><strong>revelar</strong></td><td>Descubrir → <em>El detective va a revelar la verdad.</em></td></tr>
+        <tr><td><strong>hierba</strong></td><td>Planta → <em>La hierba del jardín creció.</em></td><td><strong>hierva</strong></td><td>Verbo hervir → <em>Deja que hierva el agua.</em></td></tr>
+        <tr><td><strong>bienes</strong></td><td>Propiedades → <em>Vendió todos sus bienes.</em></td><td><strong>vienes</strong></td><td>Verbo venir → <em>¿Vienes mañana al partido?</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="homo-cs" class="hidden">
+    <table>
+      <thead><tr><th>Palabra</th><th>Significado + Oración</th><th>Palabra</th><th>Significado + Oración</th></tr></thead>
+      <tbody>
+        <tr><td><strong>cegar</strong></td><td>Dejar ciego → <em>La luz puede cegar.</em></td><td><strong>segar</strong></td><td>Cosechar → <em>El campesino sega el trigo.</em></td></tr>
+        <tr><td><strong>cesión</strong></td><td>Acto de ceder → <em>Firmaron la cesión del terreno.</em></td><td><strong>sesión</strong></td><td>Reunión → <em>La sesión duró tres horas.</em></td></tr>
+        <tr><td><strong>cocer</strong></td><td>Preparar alimentos → <em>Hay que cocer el arroz.</em></td><td><strong>coser</strong></td><td>Unir con hilo → <em>Aprendió a coser en clases.</em></td></tr>
+        <tr><td><strong>intención</strong></td><td>Propósito → <em>Su intención era ayudar.</em></td><td><strong>intensión</strong></td><td>Intensidad (técnico) → <em>La intensión del sonido aumentó.</em></td></tr>
+        <tr><td><strong>reciente</strong></td><td>Hace poco → <em>Es una noticia reciente.</em></td><td><strong>resiente</strong></td><td>Verbo resentir → <em>Él se resiente de la crítica.</em></td></tr>
+        <tr><td><strong>acechar</strong></td><td>Vigilar → <em>El gato acecha al ratón.</em></td><td><strong>asechar</strong></td><td>Poner trampas → <em>El ladrón asechaba a su víctima.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="homo-sz" class="hidden">
+    <table>
+      <thead><tr><th>Palabra</th><th>Significado + Oración</th><th>Palabra</th><th>Significado + Oración</th></tr></thead>
+      <tbody>
+        <tr><td><strong>abrasar</strong></td><td>Quemar → <em>El sol abrasó las cosechas.</em></td><td><strong>abrazar</strong></td><td>Dar un abrazo → <em>Fue a abrazar a su madre.</em></td></tr>
+        <tr><td><strong>casar</strong></td><td>Matrimonio → <em>Se casó en primavera.</em></td><td><strong>cazar</strong></td><td>Capturar → <em>Van a cazar venados.</em></td></tr>
+        <tr><td><strong>mesa</strong></td><td>Mueble → <em>Los platos están sobre la mesa.</em></td><td><strong>meza</strong></td><td>Verbo mecer → <em>Mézalo para que duerma.</em></td></tr>
+        <tr><td><strong>rasa</strong></td><td>Verbo rasar → <em>Rasa la superficie con cuidado.</em></td><td><strong>raza</strong></td><td>Casta, estirpe → <em>Es un perro de raza pura.</em></td></tr>
+        <tr><td><strong>has</strong></td><td>Verbo haber → <em>¿Has comido hoy?</em></td><td><strong>haz</strong></td><td>Verbo hacer / conjunto → <em>Haz la tarea ahora.</em></td></tr>
+        <tr><td><strong>azar</strong></td><td>Casualidad → <em>Lo encontré por puro azar.</em></td><td><strong>asar</strong></td><td>Cocinar al fuego → <em>Van a asar carne el domingo.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="homo-yll" class="hidden">
+    <table>
+      <thead><tr><th>Palabra</th><th>Significado + Oración</th><th>Palabra</th><th>Significado + Oración</th></tr></thead>
+      <tbody>
+        <tr><td><strong>haya</strong></td><td>Verbo haber → <em>Espero que haya comida.</em></td><td><strong>halla</strong></td><td>Verbo hallar → <em>El detective halla las pistas.</em></td></tr>
+        <tr><td><strong>habría</strong></td><td>Verbo haber → <em>Habría sido mejor esperar.</em></td><td><strong>abría</strong></td><td>Verbo abrir → <em>Ella abría la puerta cada mañana.</em></td></tr>
+        <tr><td><strong>cayó</strong></td><td>Verbo caer → <em>El niño cayó de la silla.</em></td><td><strong>calló</strong></td><td>Verbo callar → <em>Se calló cuando entró el profesor.</em></td></tr>
+        <tr><td><strong>cayo</strong></td><td>Isla pequeña → <em>El cayo estaba rodeado de agua.</em></td><td><strong>callo</strong></td><td>Dureza de pie → <em>Le salió un callo en el pie.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="homo-h" class="hidden">
+    <table>
+      <thead><tr><th>Palabra</th><th>Significado + Oración</th><th>Palabra</th><th>Significado + Oración</th></tr></thead>
+      <tbody>
+        <tr><td><strong>aprehender</strong></td><td>Capturar → <em>La policía logró aprehender al fugitivo.</em></td><td><strong>aprender</strong></td><td>Instruirse → <em>Es importante aprender idiomas.</em></td></tr>
+        <tr><td><strong>herrar</strong></td><td>Poner herraduras → <em>El herrero fue a herrar al caballo.</em></td><td><strong>errar</strong></td><td>Equivocarse → <em>Es humano errar.</em></td></tr>
+        <tr><td><strong>hola</strong></td><td>Saludo → <em>Hola, ¿cómo estás?</em></td><td><strong>ola</strong></td><td>Movimiento del mar → <em>Una ola enorme llegó.</em></td></tr>
+        <tr><td><strong>a ver</strong></td><td>Expectación → <em>A ver si mañana vienes.</em></td><td><strong>haber</strong></td><td>Verbo impersonal → <em>Debe haber comida.</em></td></tr>
+        <tr><td><strong>a ser</strong></td><td>Algo que ocurre → <em>Vamos a ser amigos.</em></td><td><strong>hacer</strong></td><td>Producir → <em>Vamos a hacer un pastel.</em></td></tr>
+        <tr><td><strong>sabía</strong></td><td>Verbo saber → <em>Era una mujer que sabía la respuesta.</em></td><td><strong>sabia</strong></td><td>Con sabiduría (adj) → <em>La sabia doctora encontró la cura.</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+  <h3>Quiz: ¿Cuál palabra corresponde?</h3>
+  <div id="homofonos-quiz"></div>
+</section>
+
+<!-- ══════════════════ PARÓNIMOS ══════════════════ -->
+<section id="paronimos" class="section">
+  <h2>Parónimos</h2>
+  <div class="rule-box">Palabras muy <strong>parecidas</strong> en pronunciación y escritura, pero con <strong>significado diferente</strong>.</div>
+
+  <table>
+    <thead><tr><th>Parónimo 1</th><th>Significado + Oración</th><th>Parónimo 2</th><th>Significado + Oración</th></tr></thead>
+    <tbody>
+      <tr><td><strong>adoptar</strong></td><td>De adopción → <em>Decidieron adoptar a un niño.</em></td><td><strong>adaptar</strong></td><td>Acomodar → <em>Hay que adaptar el plan.</em></td></tr>
+      <tr><td><strong>aptitud</strong></td><td>Habilidad → <em>Tiene aptitud para la música.</em></td><td><strong>actitud</strong></td><td>Disposición → <em>Tomó una actitud positiva.</em></td></tr>
+      <tr><td><strong>afecto</strong></td><td>Cariño → <em>Le tengo mucho afecto.</em></td><td><strong>efecto</strong></td><td>Resultado → <em>El efecto fue inmediato.</em></td></tr>
+      <tr><td><strong>apertura</strong></td><td>Acto de abrir → <em>La apertura del congreso fue solemne.</em></td><td><strong>abertura</strong></td><td>Hendidura → <em>Hay una abertura en la pared.</em></td></tr>
+      <tr><td><strong>espiar</strong></td><td>Observar con disimulo → <em>El agente espía al sospechoso.</em></td><td><strong>expiar</strong></td><td>Recalcar culpa → <em>Fue a expiar sus pecados.</em></td></tr>
+      <tr><td><strong>espirar</strong></td><td>Exhalar → <em>El médico le pidió espirar lentamente.</em></td><td><strong>expirar</strong></td><td>Morir → <em>El paciente expiró a la medianoche.</em></td></tr>
+      <tr><td><strong>infringir</strong></td><td>Violar una ley → <em>Infringió el reglamento.</em></td><td><strong>infligir</strong></td><td>Imponer castigo → <em>Le infligió un castigo severo.</em></td></tr>
+      <tr><td><strong>lívido</strong></td><td>Intensamente pálido → <em>Estaba lívido del susto.</em></td><td><strong>libido</strong></td><td>Deseo sexual (psicol.) → <em>Freud estudió la libido humana.</em></td></tr>
+      <tr><td><strong>mejoría</strong></td><td>Disminución de enfermedad → <em>El paciente experimentó una mejoría.</em></td><td><strong>mejora</strong></td><td>Perfeccionamiento → <em>La mejora del sistema fue notable.</em></td></tr>
+      <tr><td><strong>prejuicio</strong></td><td>Juicio previo → <em>El prejuicio es un obstáculo social.</em></td><td><strong>perjuicio</strong></td><td>Daño → <em>Le causó un gran perjuicio económico.</em></td></tr>
+      <tr><td><strong>secesión</strong></td><td>Separación → <em>La secesión generó conflicto.</em></td><td><strong>sucesión</strong></td><td>De suceder → <em>La sucesión al trono fue disputada.</em></td></tr>
+      <tr><td><strong>amoral</strong></td><td>Carente de moral → <em>Su actitud amoral sorprendió.</em></td><td><strong>inmoral</strong></td><td>Contrario a la moral → <em>Esa conducta es inmoral.</em></td></tr>
+      <tr><td><strong>especie</strong></td><td>División de género → <em>Es una especie en extinción.</em></td><td><strong>especia</strong></td><td>Sustancia aromática → <em>Añadió varias especias al guiso.</em></td></tr>
+      <tr><td><strong>fragante</strong></td><td>Perfumado → <em>Llevaba un perfume muy fragante.</em></td><td><strong>flagrante</strong></td><td>Evidente, en plena acción → <em>Fue detenido en flagrante delito.</em></td></tr>
+      <tr><td><strong>latente</strong></td><td>Escondido, inactivo → <em>El volcán tiene actividad latente.</em></td><td><strong>latiente</strong></td><td>Que late → <em>Sentía su corazón latiente.</em></td></tr>
+      <tr><td><strong>desbastar</strong></td><td>Quitar tosquedad → <em>Hay que desbastar la madera.</em></td><td><strong>devastar</strong></td><td>Destruir → <em>El huracán devastó la ciudad.</em></td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+  <h3>Quiz: ¿Parónimo correcto?</h3>
+  <div id="paronimos-quiz"></div>
+</section>
+
+<!-- ══════════════════ SINÓNIMOS ══════════════════ -->
+<section id="sinonimos" class="section">
+  <h2>Sinónimos</h2>
+  <div class="rule-box">Palabras de <strong>igual o muy similar significado</strong>. Pueden reemplazarse en un contexto sin cambiar el sentido principal.</div>
+  <div class="tip-box">💡 En el examen: busca la palabra que se pueda sustituir sin cambiar el mensaje.</div>
+
+  <h3>Parejas sinónimas — Examen 1</h3>
+  <table>
+    <thead><tr><th>Palabra</th><th>Sinónimo</th><th>Explicación</th></tr></thead>
+    <tbody>
+      <tr><td>abolir</td><td>revocar</td><td>Anular, dejar sin efecto</td></tr>
+      <tr><td>aglutinar</td><td>reunir</td><td>Juntar, agrupar elementos</td></tr>
+      <tr><td>asiento</td><td>base</td><td>Lugar de soporte / fundamento</td></tr>
+      <tr><td>base</td><td>fundamento</td><td>Sustento o cimiento de algo</td></tr>
+      <tr><td>endeble</td><td>frágil</td><td>Débil, que se rompe fácilmente</td></tr>
+      <tr><td>filtrar</td><td>depurar</td><td>Limpiar, purificar</td></tr>
+      <tr><td>extranjero</td><td>foráneo</td><td>Que viene de otro país o lugar</td></tr>
+      <tr><td>ficticio</td><td>fílmico</td><td>Irreal / cinematográfico (por contexto)</td></tr>
+      <tr><td>ilusionante</td><td>viable</td><td>Que genera esperanza / posible de realizar</td></tr>
+      <tr><td>caótico</td><td>desordenado</td><td>Sin orden ni concierto</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Parejas sinónimas — Examen 2</h3>
+  <table>
+    <thead><tr><th>Palabra</th><th>Sinónimo</th><th>Explicación</th></tr></thead>
+    <tbody>
+      <tr><td>áspero</td><td>tosco</td><td>Rugoso, sin suavidad / grosero</td></tr>
+      <tr><td>copioso</td><td>exuberante</td><td>Abundante, en gran cantidad</td></tr>
+      <tr><td>difundir</td><td>pregonar</td><td>Dar a conocer, publicar</td></tr>
+      <tr><td>variable</td><td>voluble</td><td>Que cambia con facilidad</td></tr>
+      <tr><td>custodiar</td><td>vigilante</td><td>Guardar, proteger / el que vigila</td></tr>
+      <tr><td>favorable</td><td>propicio</td><td>Que beneficia, que favorece algo</td></tr>
+      <tr><td>adular</td><td>elogiar</td><td>Halagar, decir cosas buenas de alguien</td></tr>
+      <tr><td>dependiente</td><td>subordinado</td><td>Que depende de otro / bajo órdenes</td></tr>
+      <tr><td>remoto</td><td>lejano</td><td>Distante en espacio o tiempo</td></tr>
+      <tr><td>infrecuente</td><td>esporádico</td><td>Que ocurre pocas veces</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+  <h3>Quiz: Emparejar sinónimos</h3>
+  <div id="sinonimos-quiz"></div>
+</section>
+
+<!-- ══════════════════ ANTÓNIMOS ══════════════════ -->
+<section id="antonimos" class="section">
+  <h2>Antónimos</h2>
+  <div class="rule-box">Palabras de <strong>significado opuesto o contrario</strong>.</div>
+
+  <div class="grid3" style="margin-bottom:1rem">
+    <div class="card card-accent-purple">
+      <span class="badge badge-purple">Graduables</span>
+      <p style="font-family:sans-serif;font-size:0.84rem">Admiten grados intermedios<br><em>frío ↔ templado ↔ caliente</em></p>
+    </div>
+    <div class="card card-accent-teal">
+      <span class="badge badge-teal">Complementarios</span>
+      <p style="font-family:sans-serif;font-size:0.84rem">No admiten término medio<br><em>vivo ↔ muerto</em></p>
+    </div>
+    <div class="card card-accent-coral">
+      <span class="badge badge-coral">Inversos / Recíprocos</span>
+      <p style="font-family:sans-serif;font-size:0.84rem">Expresan relaciones inversas<br><em>comprar ↔ vender</em></p>
+    </div>
+  </div>
+
+  <h3>Parejas antónimas — Examen 1</h3>
+  <table>
+    <thead><tr><th>Palabra</th><th>Antónimo</th><th>Explicación</th></tr></thead>
+    <tbody>
+      <tr><td>adulto</td><td>novel</td><td>Persona mayor / sin experiencia</td></tr>
+      <tr><td>espera</td><td>prisa</td><td>Aguardar / urgencia</td></tr>
+      <tr><td>extraer</td><td>penetrar</td><td>Sacar hacia afuera / entrar</td></tr>
+      <tr><td>certificado</td><td>inválido</td><td>Válido, comprobado / sin validez</td></tr>
+      <tr><td>constante</td><td>voluble</td><td>Que no cambia / que cambia fácilmente</td></tr>
+      <tr><td>copioso</td><td>precario</td><td>Abundante / escaso, insuficiente</td></tr>
+      <tr><td>decidido</td><td>indeciso</td><td>Actúa sin dudar / que duda</td></tr>
+      <tr><td>delicado</td><td>fuerte</td><td>Sensible, frágil / resistente</td></tr>
+      <tr><td>desatender</td><td>vigilar</td><td>Descuidar / cuidar con atención</td></tr>
+      <tr><td>difamar</td><td>pregonar</td><td>Hablar mal de alguien / anunciar con orgullo</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Parejas antónimas — Examen 2</h3>
+  <table>
+    <thead><tr><th>Palabra</th><th>Antónimo</th><th>Explicación</th></tr></thead>
+    <tbody>
+      <tr><td>arduo</td><td>fácil</td><td>Difícil / sin dificultad</td></tr>
+      <tr><td>auténtico</td><td>ficticio</td><td>Real, genuino / inventado, falso</td></tr>
+      <tr><td>autóctono</td><td>foráneo</td><td>Originario del lugar / de otro lugar</td></tr>
+      <tr><td>disgregar</td><td>reunir</td><td>Separar / juntar</td></tr>
+      <tr><td>inadvertido</td><td>notorio</td><td>Pasa desapercibido / evidente, conocido</td></tr>
+      <tr><td>ratificar</td><td>revocar</td><td>Confirmar / anular, cancelar</td></tr>
+      <tr><td>novel</td><td>veterano</td><td>Sin experiencia / con mucha experiencia</td></tr>
+      <tr><td>obtuso</td><td>inteligente</td><td>Torpe, mente cerrada / gran intelecto</td></tr>
+      <tr><td>cumbre</td><td>base</td><td>Lo más alto / el punto de apoyo inferior</td></tr>
+      <tr><td>fuerte</td><td>endeble</td><td>Resistente, robusto / débil, frágil</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+  <h3>Quiz: Emparejar antónimos</h3>
+  <div id="antonimos-quiz"></div>
+</section>
+
+<!-- ══════════════════ COMUNICACIÓN ══════════════════ -->
+<section id="comunicacion" class="section">
+  <h2>Comunicación Oral — Fonseca Yerena</h2>
+
+  <div class="grid2">
+    <div class="card card-accent-purple">
+      <span class="badge badge-purple">Comunicación</span>
+      <p style="font-family:sans-serif;font-size:0.88rem;line-height:1.7">Surge de la <strong>necesidad del ser humano</strong> por ponerse en contacto con otros. Al emitir un mensaje, <strong>siempre se espera una respuesta</strong> → interacción.</p>
+      <ul style="font-family:sans-serif;font-size:0.83rem;padding-left:1rem;margin-top:8px;line-height:1.8">
+        <li>Requiere emisor y receptor</li>
+        <li>Bidireccional (hay respuesta)</li>
+        <li>Propósito: entendimiento entre las partes</li>
+      </ul>
+    </div>
+    <div class="card card-accent-teal">
+      <span class="badge badge-teal">Expresión</span>
+      <p style="font-family:sans-serif;font-size:0.88rem;line-height:1.7">Basta con 'sacar' de nosotros mismos algo. <strong>No se necesita receptor</strong>, no se espera respuesta.</p>
+      <ul style="font-family:sans-serif;font-size:0.83rem;padding-left:1rem;margin-top:8px;line-height:1.8">
+        <li>Solo necesita al emisor</li>
+        <li>Unidireccional (sin respuesta)</li>
+        <li>Propósito: exteriorizar algo interno</li>
+        <li>Ej: un pintor pintando solo</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Componentes de la Comunicación</h3>
+  <table>
+    <thead><tr><th>Componente</th><th>Definición</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Fuente</strong></td><td>Origen de la información</td></tr>
+      <tr><td><strong>Emisor</strong></td><td>Quien codifica y transmite el mensaje</td></tr>
+      <tr><td><strong>Receptor</strong></td><td>Quien recibe y decodifica el mensaje</td></tr>
+      <tr><td><strong>Mensaje</strong></td><td>Información a transmitir. Tiene: Código, Contenido y Tratamiento</td></tr>
+      <tr><td><strong>Canal</strong></td><td>Medio físico por el que viaja el mensaje (verbal, no verbal, electrónico)</td></tr>
+      <tr><td><strong>Retroalimentación</strong></td><td>Respuesta del receptor que confirma si el mensaje fue entendido</td></tr>
+      <tr><td><strong>Ruido</strong></td><td>Obstáculo que impide que el mensaje llegue correctamente (psicológico, fisiológico, semántico, técnico, ambiental)</td></tr>
+      <tr><td><strong>Contexto</strong></td><td>Circunstancias que rodean la comunicación (físico, social, psicológico)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Funciones del Lenguaje</h3>
+  <div class="grid3">
+    <div class="card card-accent-purple">
+      <span class="badge badge-purple">Representativa</span>
+      <p style="font-family:sans-serif;font-size:0.85rem;line-height:1.6">Capacidad de <strong>representar ideas, objetos o realidades</strong>. Nombra y describe el mundo.<br><br><em>Ej: La palabra "casa" representa el concepto de edificación.</em></p>
+    </div>
+    <div class="card card-accent-teal">
+      <span class="badge badge-teal">Expresiva</span>
+      <p style="font-family:sans-serif;font-size:0.85rem;line-height:1.6">Denota el <strong>estado psíquico del hablante</strong>: emociones, sentimientos, actitudes.<br><br><em>Ej: "¡Qué alegría verte!" expresa emoción del hablante.</em></p>
+    </div>
+    <div class="card card-accent-coral">
+      <span class="badge badge-coral">Apelativa / De llamada</span>
+      <p style="font-family:sans-serif;font-size:0.85rem;line-height:1.6">Llama la atención del oyente para <strong>influir o provocar una reacción</strong>.<br><br><em>Ej: "Por favor, cierra la puerta."</em></p>
+    </div>
+  </div>
+
+  <h3>El Receptor y sus Características</h3>
+  <div class="grid2">
+    <div class="card card-accent-blue"><span class="badge badge-blue">a) Habilidades comunicativas</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Destrezas para escuchar, leer, interpretar y decodificar el mensaje.</p></div>
+    <div class="card card-accent-purple"><span class="badge badge-purple">b) Conocimientos</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Nivel de información, experiencia y sabiduría que posee el receptor.</p></div>
+    <div class="card card-accent-teal"><span class="badge badge-teal">c) Actitudes</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Disposiciones mentales, emocionales y valorativas frente al mensaje o al emisor.</p></div>
+    <div class="card card-accent-coral"><span class="badge badge-coral">d) Sistema Social</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Entorno social, económico y cultural del receptor (estudios, clase social, grupo cultural).</p></div>
+  </div>
+
+  <h3>El Contexto y sus Elementos</h3>
+  <div class="grid3">
+    <div class="card card-accent-purple"><span class="badge badge-purple">Físico</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Espacio o lugar donde se da la comunicación. Incluye ruido, temperatura, iluminación, distancia.</p></div>
+    <div class="card card-accent-teal"><span class="badge badge-teal">Social</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Relación entre emisor y receptor (amigos, jefes, etc.) y normas sociales del entorno. Puede ser formal o informal.</p></div>
+    <div class="card card-accent-coral"><span class="badge badge-coral">Psicológico</span><p style="font-family:sans-serif;font-size:0.85rem;margin-top:6px">Estado emocional y mental de los participantes. Sentimientos, estrés, motivación, prejuicios.</p></div>
+  </div>
+
+  <h3>Marco de Referencia y Modelos Transaccionales</h3>
+  <div class="card card-accent-amber">
+    <span class="badge badge-amber">Modelos Transaccionales</span>
+    <p style="font-family:sans-serif;font-size:0.88rem;margin-top:6px;line-height:1.7">Modelos <strong>circulares de comunicación</strong> que hacen énfasis en la interacción y el intercambio de información. Tanto el emisor como el receptor <strong>se influyen recíprocamente</strong>.</p>
+  </div>
+  <div class="card card-accent-blue">
+    <span class="badge badge-blue">Marco de Referencia</span>
+    <p style="font-family:sans-serif;font-size:0.88rem;margin-top:6px;line-height:1.7">El mensaje tendrá significado para el receptor según sus <strong>conocimientos y significados adquiridos en su propia realidad</strong>: creencias, experiencias, situación social y económica.</p>
+    <ul style="font-family:sans-serif;font-size:0.83rem;padding-left:1rem;margin-top:8px;line-height:1.8">
+      <li>Sin considerarlo, el mensaje puede ser mal interpretado.</li>
+      <li>Explica por qué dos personas entienden el mismo mensaje diferente.</li>
+      <li>El emisor debe <strong>adaptar su mensaje</strong> al marco del receptor.</li>
+    </ul>
+  </div>
+
+  <hr class="divider">
+  <h3>Quiz: Comunicación</h3>
+  <div id="comunicacion-quiz"></div>
+</section>
+
+<!-- ══════════════════ PRÁCTICA EXAMEN ══════════════════ -->
+<section id="practica" class="section">
+  <h2>🎯 Simulacro de Examen</h2>
+  <p style="font-family:sans-serif;font-size:0.88rem;color:var(--text2);margin-bottom:1.5rem">Formato basado en los exámenes reales de la materia. Selecciona la parte que quieres practicar.</p>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem">
+    <button class="btn-primary" onclick="startExamPart('tildes-exam')">Parte 1: Tildes en texto</button>
+    <button class="btn-primary" onclick="startExamPart('palabras-exam')">Parte 2: Clasificación palabras</button>
+    <button class="btn-primary" onclick="startExamPart('homo-exam')">Parte 3: Homófonos / Parónimos</button>
+    <button class="btn-primary" onclick="startExamPart('sin-exam')">Parte 4: Sinónimos</button>
+    <button class="btn-primary" onclick="startExamPart('ant-exam')">Parte 5: Antónimos</button>
+  </div>
+
+  <div id="exam-area"></div>
+</section>
+
+<script>
+// ══════ NAVIGATION ══════
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ══════ HOMOFONO TABS ══════
+function showHomofonoGroup(g) {
+  ['bv','cs','sz','yll','h'].forEach(x => {
+    document.getElementById('homo-'+x).classList.add('hidden');
+    document.getElementById('tab-'+x).style.background = '';
+    document.getElementById('tab-'+x).style.color = '';
+  });
+  document.getElementById('homo-'+g).classList.remove('hidden');
+  document.getElementById('tab-'+g).style.background = 'var(--purple-light)';
+  document.getElementById('tab-'+g).style.color = 'var(--purple-dark)';
+}
+showHomofonoGroup('bv');
+
+// ══════ DATA ══════
+const palabrasExamen1 = [
+  {word:'Glúteo', vocal:'ú (glú-)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre (antepenúltima sílaba)'},
+  {word:'Moaís', vocal:'í (Mo-a-ís)', tipo:'Aguda', razon:'Hiato: "i" débil tónica + vocal → ley del hiato; termina en -s'},
+  {word:'Poplítea', vocal:'í (pop-lí-)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Peroneas', vocal:'e (pe-ro-neas)', tipo:'Grave', razon:'Grave terminada en -s → NO lleva tilde'},
+  {word:'Juez', vocal:'e (juez)', tipo:'Aguda', razon:'Aguda terminada en -z (consonante ≠ n,s) → no lleva tilde'},
+  {word:'Femoral', vocal:'a (fe-mo-ral)', tipo:'Aguda', razon:'Aguda terminada en -l (consonante) → no lleva tilde'},
+  {word:'Tahúr', vocal:'ú (ta-húr)', tipo:'Aguda', razon:'Hiato: "u" débil tónica + "a" fuerte → ley del hiato'},
+  {word:'Cartografía', vocal:'í (Car-to-gra-fí-a)', tipo:'Grave', razon:'Hiato: "i" débil tónica + "a" fuerte → ley del hiato'},
+  {word:'Fríalo', vocal:'í (Frí-a-lo)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Ilíaca', vocal:'í (I-lí-a-ca)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Diagnóstico', vocal:'ó (Diag-nós-tico)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Agorafobia', vocal:'o (A-go-ra-fobia)', tipo:'Grave', razon:'Grave terminada en -a (vocal) → no lleva tilde'},
+];
+const palabrasExamen2 = [
+  {word:'Crego', vocal:'e (Cre-go)', tipo:'Grave', razon:'Grave terminada en -o (vocal) → no lleva tilde'},
+  {word:'Taipéi', vocal:'é (Tai-péi)', tipo:'Aguda', razon:'Aguda terminada en vocal → lleva tilde'},
+  {word:'Récords', vocal:'é (Ré-cords)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Tráemelo', vocal:'á (Trá-e-melo)', tipo:'Sobreesdrújula', razon:'Sobreesdrújulas se tildan siempre (verbo + 2 pronombres)'},
+  {word:'Fluir', vocal:'u (flu-ir)', tipo:'Aguda', razon:'Diptongo "ui"; termina en -r → aguda sin tilde'},
+  {word:'Laparoscopia', vocal:'o (La-pa-rosco-pia)', tipo:'Grave', razon:'Grave terminada en -a (vocal) → no lleva tilde'},
+  {word:'Calíope', vocal:'í (Ca-lí-o-pe)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Ovías', vocal:'í (O-ví-as)', tipo:'Grave', razon:'Hiato: "i" débil tónica → ley del hiato; termina en -as'},
+  {word:'Electroencefalografía', vocal:'í (…gra-fí-a)', tipo:'Grave', razon:'Hiato: "i" débil tónica → ley del hiato'},
+  {word:'Abstraído', vocal:'í (abs-tra-í-do)', tipo:'Grave', razon:'Hiato: "i" débil tónica rompe diptongo → ley del hiato'},
+  {word:'Práctica', vocal:'á (Prác-ti-ca)', tipo:'Esdrújula', razon:'Esdrújulas se tildan siempre'},
+  {word:'Rápidamente', vocal:'á (Rá-pi-damen-te)', tipo:'(-mente)', razon:'"Rápida" lleva tilde → se conserva al añadir -mente'},
+  {word:'Continúe', vocal:'ú (Con-ti-núe)', tipo:'Grave', razon:'Hiato: "u" débil tónica → ley del hiato'},
+];
+
+// Render word classification tables as quizzes
+function renderPalabrasQuiz(data, containerId) {
+  const c = document.getElementById(containerId);
+  let html = '<div style="overflow-x:auto"><table><thead><tr><th>Palabra</th><th>Vocal acentuada</th><th>Clasificación</th><th>Razón</th></tr></thead><tbody>';
+  data.forEach((p, i) => {
+    html += `<tr>
+      <td><strong>${p.word}</strong></td>
+      <td><span id="${containerId}-v${i}" style="cursor:pointer;padding:2px 6px;border-radius:4px;background:var(--purple-light);color:var(--purple-dark);font-family:sans-serif;font-size:0.82rem" onclick="revealCell('${containerId}-v${i}','${p.vocal}')">Ver ▾</span></td>
+      <td><span id="${containerId}-t${i}" style="cursor:pointer;padding:2px 6px;border-radius:4px;background:var(--teal-light);color:var(--teal-dark);font-family:sans-serif;font-size:0.82rem" onclick="revealCell('${containerId}-t${i}','${p.tipo}')">Ver ▾</span></td>
+      <td><span id="${containerId}-r${i}" style="cursor:pointer;padding:2px 6px;border-radius:4px;background:var(--amber-light);color:var(--amber-dark);font-family:sans-serif;font-size:0.82rem;max-width:200px;display:inline-block" onclick="revealCell('${containerId}-r${i}','${p.razon.replace(/'/g,"\\'")}')">Ver ▾</span></td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+  html += '<button class="btn-secondary" style="margin-top:8px" onclick="revealAll(\''+containerId+'\')">Revelar todo</button> ';
+  html += '<button class="btn-secondary" style="margin-top:8px" onclick="hideAll(\''+containerId+'\')">Ocultar todo</button>';
+  c.innerHTML = html;
+}
+function revealCell(id, text) {
+  const el = document.getElementById(id);
+  el.textContent = text;
+  el.style.background = 'var(--green-light)';
+  el.style.color = 'var(--green-dark)';
+  el.onclick = null; el.style.cursor = 'default';
+}
+function revealAll(cid) {
+  [...palabrasExamen1, ...palabrasExamen2].forEach((p, i) => {
+    const idx = palabrasExamen1.findIndex(x=>x.word===p.word)>-1 ? palabrasExamen1.findIndex(x=>x.word===p.word) : palabrasExamen2.findIndex(x=>x.word===p.word);
+    ['v','t','r'].forEach(type => {
+      const el = document.getElementById(cid+'-'+type+idx);
+      if(el && el.textContent === 'Ver ▾') {
+        const data = cid.includes('2') ? palabrasExamen2 : palabrasExamen1;
+        const val = type==='v'?data[idx].vocal:type==='t'?data[idx].tipo:data[idx].razon;
+        revealCell(cid+'-'+type+idx, val);
+      }
+    });
+  });
+  // simpler: just click all
+  document.querySelectorAll(`[id^="${cid}-"]`).forEach(el => {
+    if(el.textContent === 'Ver ▾') el.click();
+  });
+}
+function hideAll(cid) {
+  const data = cid.includes('2') ? palabrasExamen2 : palabrasExamen1;
+  data.forEach((p,i) => {
+    ['v','t','r'].forEach(type => {
+      const el = document.getElementById(cid+'-'+type+i);
+      if(el) {
+        el.textContent = 'Ver ▾';
+        el.style.background = type==='v'?'var(--purple-light)':type==='t'?'var(--teal-light)':'var(--amber-light)';
+        el.style.color = type==='v'?'var(--purple-dark)':type==='t'?'var(--teal-dark)':'var(--amber-dark)';
+        el.style.cursor = 'pointer';
+        el.onclick = ()=>revealCell(el.id, type==='v'?p.vocal:type==='t'?p.tipo:p.razon);
+      }
+    });
+  });
+}
+renderPalabrasQuiz(palabrasExamen1, 'palabras-examen-quiz');
+renderPalabrasQuiz(palabrasExamen2, 'palabras-examen2-quiz');
+
+// ══════ DIPTONGO QUIZ ══════
+const diptongoCases = [
+  {word:'aire', answer:'diptongo', reason:'Vocal fuerte "a" + débil "i" → diptongo (ai-re)'},
+  {word:'país', answer:'hiato', reason:'Vocal débil tónica "i" + fuerte "a" → ley del hiato (pa-ís)'},
+  {word:'teatro', answer:'hiato', reason:'Dos vocales fuertes (e+a) → hiato (te-a-tro)'},
+  {word:'ciudad', answer:'diptongo', reason:'Dos débiles (i+u) → diptongo (ciu-dad)'},
+  {word:'María', answer:'hiato', reason:'Débil tónica "i" + fuerte "a" → hiato (Ma-rí-a)'},
+  {word:'fuego', answer:'diptongo', reason:'Débil "u" + fuerte "e" → diptongo (fue-go)'},
+  {word:'baúl', answer:'hiato', reason:'Débil tónica "u" + fuerte "a" → hiato (ba-úl)'},
+  {word:'buey', answer:'triptongo', reason:'Débil "u" + fuerte "e" + débil "y" → triptongo (1 sílaba)'},
+  {word:'poema', answer:'hiato', reason:'Dos fuertes "o" + "e" → hiato (po-e-ma)'},
+  {word:'viuda', answer:'diptongo', reason:'Dos débiles "i" + "u" → diptongo (viu-da)'},
+];
+let dqState = { current: 0, score: 0, total: diptongoCases.length };
+function renderDiptongoQuiz() {
+  const c = document.getElementById('diptongo-quiz');
+  if(dqState.current >= diptongoCases.length) {
+    c.innerHTML = `<div class="card card-accent-teal"><h3>¡Quiz completado!</h3><p style="font-family:sans-serif;font-size:0.9rem;margin-top:8px">Puntaje: <strong>${dqState.score}/${dqState.total}</strong></p><button class="btn-primary" style="margin-top:12px" onclick="dqState={current:0,score:0,total:${diptongoCases.length}};renderDiptongoQuiz()">Reiniciar</button></div>`;
+    return;
+  }
+  const q = diptongoCases[dqState.current];
+  c.innerHTML = `
+    <div class="card">
+      <div class="stats-row"><div class="stat-card"><div class="n">${dqState.current+1}/${dqState.total}</div><div class="l">pregunta</div></div><div class="stat-card"><div class="n">${dqState.score}</div><div class="l">correctas</div></div></div>
+      <p style="font-family:sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:1rem">¿"<span style="color:var(--purple-dark)">${q.word}</span>" contiene diptongo, hiato o triptongo?</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="quiz-btn" onclick="checkDiptongo('diptongo','${q.answer}','${q.reason.replace(/'/g,"\\'")}')">Diptongo</button>
+        <button class="quiz-btn" onclick="checkDiptongo('hiato','${q.answer}','${q.reason.replace(/'/g,"\\'")}')">Hiato</button>
+        <button class="quiz-btn" onclick="checkDiptongo('triptongo','${q.answer}','${q.reason.replace(/'/g,"\\'")}')">Triptongo</button>
+      </div>
+      <div id="dq-feedback" style="margin-top:10px"></div>
+    </div>`;
+}
+function checkDiptongo(sel, correct, reason) {
+  const fb = document.getElementById('dq-feedback');
+  if(sel === correct) {
+    dqState.score++;
+    fb.innerHTML = `<div class="feedback correct">✅ ¡Correcto! ${reason}</div>`;
+  } else {
+    fb.innerHTML = `<div class="feedback wrong">❌ Era <strong>${correct}</strong>. ${reason}</div>`;
+  }
+  document.querySelectorAll('#diptongo-quiz .quiz-btn').forEach(b=>b.disabled=true);
+  setTimeout(()=>{ dqState.current++; renderDiptongoQuiz(); }, 2000);
+}
+renderDiptongoQuiz();
+
+// ══════ HOMÓFONOS QUIZ ══════
+const homofonosQuizData = [
+  {sentence:'La doctora era muy ____ y sabía la respuesta.', options:['sabia','savia'], answer:'sabia', reason:'"Sabia" = adjetivo, persona con sabiduría. "Savia" = jugo de planta.'},
+  {sentence:'Las autoridades lograron ____ al fugitivo.', options:['aprehender','aprender'], answer:'aprehender', reason:'"Aprehender" = capturar/incautar. "Aprender" = instruirse.'},
+  {sentence:'La madre ____ al bebé para que se durmiera.', options:['mesa','meza'], answer:'meza', reason:'"Meza" = verbo mecer conjugado. "Mesa" = mueble.'},
+  {sentence:'El investigador ____ evidencia clave en el laboratorio.', options:['halla','haya'], answer:'halla', reason:'"Halla" = verbo hallar (encontrar). "Haya" = verbo haber.'},
+  {sentence:'Los estudiantes decidieron ____ contra la injusticia.', options:['rebelarse','revelarse'], answer:'rebelarse', reason:'"Rebelar" = sublevar. "Revelar" = descubrir/mostrar.'},
+  {sentence:'Los agricultores ____ el campo antes de la lluvia.', options:['segan','cegan'], answer:'segan', reason:'"Segar" = cosechar, cortar hierba. "Cegar" = dejar ciego.'},
+  {sentence:'____ sido ideal llegar más temprano a la reunión.', options:['Habría','Abría'], answer:'Habría', reason:'"Habría" = condicional de haber. "Abría" = verbo abrir.'},
+  {sentence:'____ la tarea antes de salir a jugar.', options:['Haz','Has'], answer:'Haz', reason:'"Haz" = imperativo de hacer. "Has" = verbo haber (has comido).'},
+  {sentence:'Él ____ de las críticas que le hacen sus colegas.', options:['resiente','reciente'], answer:'resiente', reason:'"Resiente" = verbo resentir. "Reciente" = que ocurrió hace poco.'},
+  {sentence:'La fiebre alta puede ____ la piel del paciente.', options:['abrasar','abrazar'], answer:'abrasar', reason:'"Abrasar" = quemar. "Abrazar" = dar un abrazo.'},
+  {sentence:'La cesión de los derechos se firmó ante ____. Era una ____ en el campo jurídico.', options:['notario-sabia','notario-savia'], answer:'notario-sabia', reason:'Contexto: "sabia" = con sabiduría; "savia" sería jugo de planta, no aplica.'},
+  {sentence:'Vamos ____ los mejores en este proyecto.', options:['a ser','hacer'], answer:'a ser', reason:'"A ser" = algo que ocurrirá. "Hacer" = producir/fabricar.'},
+  {sentence:'El ____ de Koch es la bacteria que causa la tuberculosis.', options:['bacilo','vacilo'], answer:'bacilo', reason:'"Bacilo" = microbio/bacteria. "Vacilo" = verbo vacilar.'},
+  {sentence:'La ____ del territorio generó un conflicto internacional.', options:['cesión','sesión'], answer:'cesión', reason:'"Cesión" = acto de ceder/separar. "Sesión" = reunión, junta.'},
+];
+let hqState = { current: 0, score: 0, order: [...Array(homofonosQuizData.length).keys()] };
+function shuffle(arr) { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];} return arr; }
+hqState.order = shuffle(hqState.order);
+function renderHomofonosQuiz() {
+  const c = document.getElementById('homofonos-quiz');
+  if(hqState.current >= homofonosQuizData.length) {
+    c.innerHTML = `<div class="card card-accent-teal"><h3>¡Quiz completado!</h3><p style="font-family:sans-serif;font-size:0.9rem;margin-top:8px">Puntaje: <strong>${hqState.score}/${homofonosQuizData.length}</strong></p><button class="btn-primary" style="margin-top:12px" onclick="hqState={current:0,score:0,order:shuffle([...Array(${homofonosQuizData.length}).keys()])};renderHomofonosQuiz()">Reiniciar</button></div>`;
+    return;
+  }
+  const q = homofonosQuizData[hqState.order[hqState.current]];
+  const opts = shuffle([...q.options]);
+  c.innerHTML = `
+    <div class="card">
+      <div class="stats-row"><div class="stat-card"><div class="n">${hqState.current+1}/${homofonosQuizData.length}</div><div class="l">pregunta</div></div><div class="stat-card"><div class="n">${hqState.score}</div><div class="l">correctas</div></div></div>
+      <p style="font-family:sans-serif;font-size:1rem;line-height:1.7;margin-bottom:1rem">${q.sentence}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${opts.map(o=>`<button class="quiz-btn" onclick="checkHomo('${o}','${q.answer.replace(/'/g,"\\'")}','${q.reason.replace(/'/g,"\\'")}',this)">${o}</button>`).join('')}
+      </div>
+      <div id="hq-feedback" style="margin-top:10px"></div>
+    </div>`;
+}
+function checkHomo(sel, correct, reason, btn) {
+  const fb = document.getElementById('hq-feedback');
+  document.querySelectorAll('#homofonos-quiz .quiz-btn').forEach(b=>b.disabled=true);
+  if(sel === correct) { hqState.score++; btn.classList.add('correct'); fb.innerHTML=`<div class="feedback correct">✅ ¡Correcto! ${reason}</div>`; }
+  else { btn.classList.add('wrong'); document.querySelectorAll('#homofonos-quiz .quiz-btn').forEach(b=>{ if(b.textContent===correct) b.classList.add('reveal'); }); fb.innerHTML=`<div class="feedback wrong">❌ Era <strong>${correct}</strong>. ${reason}</div>`; }
+  setTimeout(()=>{ hqState.current++; renderHomofonosQuiz(); }, 2500);
+}
+renderHomofonosQuiz();
+
+// ══════ PARÓNIMOS QUIZ ══════
+const paronimosQuizData = [
+  {sentence:'Tiene mucha ____ para el deporte.', options:['aptitud','actitud'], answer:'aptitud', reason:'"Aptitud" = habilidad/capacidad innata. "Actitud" = disposición mental.'},
+  {sentence:'Le causó un gran ____ económico.', options:['perjuicio','prejuicio'], answer:'perjuicio', reason:'"Perjuicio" = daño. "Prejuicio" = juicio previo sin fundamento.'},
+  {sentence:'La ____ del congreso fue muy solemne.', options:['apertura','abertura'], answer:'apertura', reason:'"Apertura" = acto de abrir/inaugurar. "Abertura" = hendidura o grieta.'},
+  {sentence:'Fue detenido en ____ delito.', options:['flagrante','fragante'], answer:'flagrante', reason:'"Flagrante" = evidente, en plena acción. "Fragante" = perfumado.'},
+  {sentence:'El ____ racial impide una convivencia sana.', options:['prejuicio','perjuicio'], answer:'prejuicio', reason:'"Prejuicio" = juicio previo sin fundamento. "Perjuicio" = daño económico o material.'},
+  {sentence:'Freud estudió la ____ humana.', options:['libido','lívido'], answer:'libido', reason:'"Libido" = deseo sexual (psicología). "Lívido" = intensamente pálido.'},
+  {sentence:'Le ____ un castigo muy severo.', options:['infligió','infringió'], answer:'infligió', reason:'"Infligir" = imponer castigo. "Infringir" = violar una ley.'},
+  {sentence:'El paciente ____ a la medianoche.', options:['expiró','espiró'], answer:'expiró', reason:'"Expirar" = morir/acabarse el plazo. "Espirar" = exhalar aire.'},
+  {sentence:'La ____ al trono fue muy disputada.', options:['sucesión','secesión'], answer:'sucesión', reason:'"Sucesión" = de suceder/heredar. "Secesión" = separación de un territorio.'},
+  {sentence:'El huracán ____ la ciudad completa.', options:['devastó','desbastó'], answer:'devastó', reason:'"Devastar" = destruir completamente. "Desbastar" = quitar tosquedad a un material.'},
+];
+let pqState = { current: 0, score: 0, order: shuffle([...Array(paronimosQuizData.length).keys()]) };
+function renderParonimosQuiz() {
+  const c = document.getElementById('paronimos-quiz');
+  if(pqState.current >= paronimosQuizData.length) {
+    c.innerHTML = `<div class="card card-accent-teal"><h3>¡Quiz completado!</h3><p style="font-family:sans-serif;font-size:0.9rem;margin-top:8px">Puntaje: <strong>${pqState.score}/${paronimosQuizData.length}</strong></p><button class="btn-primary" style="margin-top:12px" onclick="pqState={current:0,score:0,order:shuffle([...Array(${paronimosQuizData.length}).keys()])};renderParonimosQuiz()">Reiniciar</button></div>`;
+    return;
+  }
+  const q = paronimosQuizData[pqState.order[pqState.current]];
+  const opts = shuffle([...q.options]);
+  c.innerHTML = `
+    <div class="card">
+      <div class="stats-row"><div class="stat-card"><div class="n">${pqState.current+1}/${paronimosQuizData.length}</div><div class="l">pregunta</div></div><div class="stat-card"><div class="n">${pqState.score}</div><div class="l">correctas</div></div></div>
+      <p style="font-family:sans-serif;font-size:1rem;line-height:1.7;margin-bottom:1rem">${q.sentence}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${opts.map(o=>`<button class="quiz-btn" onclick="checkParonimo('${o}','${q.answer.replace(/'/g,"\\'")}','${q.reason.replace(/'/g,"\\'")}',this)">${o}</button>`).join('')}
+      </div>
+      <div id="pq-feedback" style="margin-top:10px"></div>
+    </div>`;
+}
+function checkParonimo(sel, correct, reason, btn) {
+  const fb = document.getElementById('pq-feedback');
+  document.querySelectorAll('#paronimos-quiz .quiz-btn').forEach(b=>b.disabled=true);
+  if(sel===correct){pqState.score++;btn.classList.add('correct');fb.innerHTML=`<div class="feedback correct">✅ ¡Correcto! ${reason}</div>`;}
+  else{btn.classList.add('wrong');document.querySelectorAll('#paronimos-quiz .quiz-btn').forEach(b=>{if(b.textContent===correct)b.classList.add('reveal');});fb.innerHTML=`<div class="feedback wrong">❌ Era <strong>${correct}</strong>. ${reason}</div>`;}
+  setTimeout(()=>{ pqState.current++; renderParonimosQuiz(); }, 2500);
+}
+renderParonimosQuiz();
+
+// ══════ SINÓNIMOS MATCHING QUIZ ══════
+const sinonimosData = [
+  ['abolir','revocar'],['aglutinar','reunir'],['endeble','frágil'],['filtrar','depurar'],
+  ['extranjero','foráneo'],['caótico','desordenado'],['áspero','tosco'],['copioso','exuberante'],
+  ['difundir','pregonar'],['variable','voluble'],['custodiar','vigilante'],['favorable','propicio'],
+  ['dependiente','subordinado'],['remoto','lejano'],['infrecuente','esporádico'],
+];
+let sqState = { selected: null, matched: [], errors: 0 };
+function renderSinonimosQuiz() {
+  const c = document.getElementById('sinonimos-quiz');
+  sqState = { selected: null, matched: [], errors: 0 };
+  const pairs = shuffle(sinonimosData.slice(0,8));
+  const left = shuffle(pairs.map(p=>p[0]));
+  const right = shuffle(pairs.map(p=>p[1]));
+  window._sqPairs = pairs;
+  window._sqLeft = left;
+  window._sqRight = right;
+  c.innerHTML = `
+    <div class="card">
+      <p style="font-family:sans-serif;font-size:0.88rem;color:var(--text2);margin-bottom:1rem">Haz clic en una palabra de la izquierda y luego en su sinónimo de la derecha.</p>
+      <div id="sq-feedback" style="margin-bottom:10px"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div id="sq-left">${left.map(w=>`<div class="word-pill" id="sql-${w}" onclick="sqSelect('left','${w}')">${w}</div>`).join('')}</div>
+        <div id="sq-right">${right.map(w=>`<div class="word-pill" id="sqr-${w}" onclick="sqSelect('right','${w}')">${w}</div>`).join('')}</div>
+      </div>
+      <div id="sq-score" style="margin-top:1rem;font-family:sans-serif;font-size:0.85rem;color:var(--text2)"></div>
+    </div>`;
+}
+function sqSelect(side, word) {
+  if(sqState.matched.includes(word)) return;
+  if(side === 'left') {
+    if(sqState.selected?.side === 'left') {
+      document.getElementById('sql-'+sqState.selected.word)?.classList.remove('selected');
+    }
+    sqState.selected = {side:'left', word};
+    document.getElementById('sql-'+word)?.classList.add('selected');
+  } else {
+    if(!sqState.selected || sqState.selected.side !== 'left') return;
+    const lw = sqState.selected.word;
+    const pair = window._sqPairs.find(p=>p[0]===lw||p[1]===lw);
+    const isMatch = pair && ((pair[0]===lw && pair[1]===word) || (pair[1]===lw && pair[0]===word));
+    if(isMatch) {
+      document.getElementById('sql-'+lw)?.classList.remove('selected');
+      document.getElementById('sql-'+lw)?.classList.add('matched');
+      document.getElementById('sqr-'+word)?.classList.add('matched');
+      sqState.matched.push(lw, word);
+      sqState.selected = null;
+      document.getElementById('sq-feedback').innerHTML = `<div class="feedback correct" style="display:inline-block">✅ ¡Correcto!</div>`;
+      if(sqState.matched.length >= window._sqLeft.length * 2) {
+        document.getElementById('sq-score').innerHTML = `<strong>🎉 ¡Completado!</strong> <button class="btn-secondary" style="margin-left:10px" onclick="renderSinonimosQuiz()">Nuevo set</button>`;
+      }
+    } else {
+      sqState.errors++;
+      document.getElementById('sql-'+lw)?.classList.remove('selected');
+      document.getElementById('sq-feedback').innerHTML = `<div class="feedback wrong" style="display:inline-block">❌ No son sinónimos. Intenta de nuevo.</div>`;
+      sqState.selected = null;
+    }
+  }
+}
+renderSinonimosQuiz();
+
+// ══════ ANTÓNIMOS MATCHING QUIZ ══════
+const antonimosData = [
+  ['adulto','novel'],['espera','prisa'],['extraer','penetrar'],['copioso','precario'],
+  ['decidido','indeciso'],['delicado','fuerte'],['desatender','vigilar'],['difamar','pregonar'],
+  ['arduo','fácil'],['auténtico','ficticio'],['autóctono','foráneo'],['disgregar','reunir'],
+  ['ratificar','revocar'],['obtuso','inteligente'],['cumbre','base'],
+];
+let aqState = { selected: null, matched: [], errors: 0 };
+function renderAntonimosQuiz() {
+  const c = document.getElementById('antonimos-quiz');
+  aqState = { selected: null, matched: [], errors: 0 };
+  const pairs = shuffle(antonimosData.slice(0,8));
+  const left = shuffle(pairs.map(p=>p[0]));
+  const right = shuffle(pairs.map(p=>p[1]));
+  window._aqPairs = pairs;
+  window._aqLeft = left;
+  c.innerHTML = `
+    <div class="card">
+      <p style="font-family:sans-serif;font-size:0.88rem;color:var(--text2);margin-bottom:1rem">Haz clic en una palabra de la izquierda y luego en su antónimo de la derecha.</p>
+      <div id="aq-feedback" style="margin-bottom:10px"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div>${left.map(w=>`<div class="word-pill" id="aql-${w}" onclick="aqSelect('left','${w}')" style="background:var(--coral-light);color:var(--coral-dark)">${w}</div>`).join('')}</div>
+        <div>${right.map(w=>`<div class="word-pill" id="aqr-${w}" onclick="aqSelect('right','${w}')" style="background:var(--blue-light);color:var(--blue-dark)">${w}</div>`).join('')}</div>
+      </div>
+      <div id="aq-score" style="margin-top:1rem;font-family:sans-serif;font-size:0.85rem;color:var(--text2)"></div>
+    </div>`;
+}
+function aqSelect(side, word) {
+  if(aqState.matched.includes(word)) return;
+  if(side === 'left') {
+    if(aqState.selected?.side === 'left') document.getElementById('aql-'+aqState.selected.word)?.classList.remove('selected');
+    aqState.selected = {side:'left', word};
+    document.getElementById('aql-'+word)?.classList.add('selected');
+  } else {
+    if(!aqState.selected || aqState.selected.side !== 'left') return;
+    const lw = aqState.selected.word;
+    const pair = window._aqPairs.find(p=>p[0]===lw||p[1]===lw);
+    const isMatch = pair && ((pair[0]===lw && pair[1]===word)||(pair[1]===lw && pair[0]===word));
+    if(isMatch) {
+      document.getElementById('aql-'+lw)?.classList.remove('selected');
+      document.getElementById('aql-'+lw)?.classList.add('matched');
+      document.getElementById('aqr-'+word)?.classList.add('matched');
+      aqState.matched.push(lw, word);
+      aqState.selected = null;
+      document.getElementById('aq-feedback').innerHTML = `<div class="feedback correct" style="display:inline-block">✅ ¡Correcto!</div>`;
+      if(aqState.matched.length >= window._aqLeft.length * 2) document.getElementById('aq-score').innerHTML = `<strong>🎉 ¡Completado!</strong> <button class="btn-secondary" style="margin-left:10px" onclick="renderAntonimosQuiz()">Nuevo set</button>`;
+    } else {
+      document.getElementById('aql-'+lw)?.classList.remove('selected');
+      document.getElementById('aq-feedback').innerHTML = `<div class="feedback wrong" style="display:inline-block">❌ No son antónimos. Intenta de nuevo.</div>`;
+      aqState.selected = null;
+    }
+  }
+}
+renderAntonimosQuiz();
+
+// ══════ COMUNICACIÓN QUIZ ══════
+const comQuizData = [
+  {q:'¿Cuál es la principal diferencia entre comunicación y expresión?', options:['La comunicación es bidireccional; la expresión es unidireccional','La comunicación solo se da en forma escrita','La expresión siempre requiere un receptor','Ambas requieren emisor y receptor'], answer:0, reason:'La comunicación requiere respuesta e interacción; la expresión solo necesita que el emisor exteriorice algo.'},
+  {q:'¿Cuáles son las características del Receptor según Fonseca Yerena?', options:['Código, contenido, tratamiento y canal','Habilidades comunicativas, conocimientos, actitudes y sistema social','Fuente, emisor, mensaje y retroalimentación','Contexto físico, social y psicológico'], answer:1, reason:'Fonseca Yerena establece cuatro características del receptor: habilidades comunicativas, conocimientos, actitudes y sistema social.'},
+  {q:'¿Qué es el Marco de Referencia?', options:['El espacio físico donde se da la comunicación','El conjunto de reglas gramaticales del idioma','El conjunto de conocimientos, creencias y experiencias del receptor que dan significado al mensaje','El canal por el que viaja el mensaje'], answer:2, reason:'El marco de referencia indica que el mensaje tendrá significado según los conocimientos y significados adquiridos en la propia realidad del receptor.'},
+  {q:'¿Qué tipo de contexto corresponde al "estado emocional y mental de los participantes"?', options:['Contexto físico','Contexto social','Contexto cultural','Contexto psicológico'], answer:3, reason:'El contexto psicológico corresponde al estado emocional y mental; el físico es el espacio, el social es la relación entre participantes.'},
+  {q:'¿Cuál función del lenguaje busca INFLUIR en el receptor para que actúe?', options:['Representativa','Expresiva','Apelativa / De llamada','Comunicativa'], answer:2, reason:'La función apelativa o de llamada busca llamar la atención del oyente e influir en él para que realice una acción.'},
+  {q:'¿Qué son los modelos transaccionales?', options:['Modelos lineales que solo van del emisor al receptor','Modelos circulares donde emisor y receptor se influyen recíprocamente','Modelos de enseñanza del lenguaje','Modelos de clasificación de palabras'], answer:1, reason:'Los modelos transaccionales son circulares y destacan que tanto emisor como receptor se influyen mutuamente.'},
+  {q:'¿Qué elemento de la comunicación confirma si el mensaje fue entendido?', options:['El canal','El ruido','La retroalimentación','El código'], answer:2, reason:'La retroalimentación (feedback) es la respuesta del receptor que confirma la recepción y comprensión del mensaje.'},
+  {q:'El "código" del mensaje se refiere a:', options:['El idioma o lenguaje utilizado','El tono emocional del emisor','El medio de transmisión','La intención del receptor'], answer:0, reason:'El código es el lenguaje utilizado: inglés, español, musical, etc. El contenido son las ideas; el tratamiento es el estilo.'},
+];
+let cqState = { current: 0, score: 0, order: shuffle([...Array(comQuizData.length).keys()]) };
+function renderComunicacionQuiz() {
+  const c = document.getElementById('comunicacion-quiz');
+  if(cqState.current >= comQuizData.length) {
+    c.innerHTML = `<div class="card card-accent-teal"><h3>¡Quiz completado!</h3><p style="font-family:sans-serif;font-size:0.9rem;margin-top:8px">Puntaje: <strong>${cqState.score}/${comQuizData.length}</strong></p><button class="btn-primary" style="margin-top:12px" onclick="cqState={current:0,score:0,order:shuffle([...Array(${comQuizData.length}).keys()])};renderComunicacionQuiz()">Reiniciar</button></div>`;
+    return;
+  }
+  const q = comQuizData[cqState.order[cqState.current]];
+  c.innerHTML = `
+    <div class="card">
+      <div class="stats-row"><div class="stat-card"><div class="n">${cqState.current+1}/${comQuizData.length}</div><div class="l">pregunta</div></div><div class="stat-card"><div class="n">${cqState.score}</div><div class="l">correctas</div></div></div>
+      <p style="font-family:sans-serif;font-size:1rem;font-weight:500;line-height:1.6;margin-bottom:1rem">${q.q}</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        ${q.options.map((o,i)=>`<button class="quiz-btn" style="text-align:left" onclick="checkCom(${i},${q.answer},'${q.reason.replace(/'/g,"\\'")}',this)">${o}</button>`).join('')}
+      </div>
+      <div id="cq-feedback" style="margin-top:10px"></div>
+    </div>`;
+}
+function checkCom(sel, correct, reason, btn) {
+  document.querySelectorAll('#comunicacion-quiz .quiz-btn').forEach(b=>b.disabled=true);
+  const fb = document.getElementById('cq-feedback');
+  if(sel===correct){cqState.score++;btn.classList.add('correct');fb.innerHTML=`<div class="feedback correct">✅ ¡Correcto! ${reason}</div>`;}
+  else{btn.classList.add('wrong');document.querySelectorAll('#comunicacion-quiz .quiz-btn')[correct]?.classList.add('reveal');fb.innerHTML=`<div class="feedback wrong">❌ Incorrecto. ${reason}</div>`;}
+  setTimeout(()=>{ cqState.current++; renderComunicacionQuiz(); }, 2800);
+}
+renderComunicacionQuiz();
+
+// ══════ SIMULACRO DE EXAMEN ══════
+const examTildesText = `¿Que hace buena una adaptacion de Shakespeare? La nueva version de la tragedia se mide con tres grandes clasicos: las de Orson Welles, Akira Kurosawa y Roman Polanski. De todas las obras de William Shakespeare, el guionista mas prolífico del cine, quizá sean dos las mas cinematograficas: Romeo y Julieta, mito de amor universal transformado en poema, y la violenta, brutal y raida Macbeth.`;
+
+// Words that need tilde in the exam text with positions
+const tildesAnswers = [
+  {word:'Qué', orig:'Que', pos:0},
+  {word:'adaptación', orig:'adaptacion', pos:1},
+  {word:'versión', orig:'version', pos:2},
+  {word:'clásicos', orig:'clasicos', pos:3},
+  {word:'más', orig:'mas', pos:4},
+  {word:'más', orig:'mas', pos:5},
+  {word:'cinematográficas', orig:'cinematograficas', pos:6},
+  {word:'raída', orig:'raida', pos:7},
+];
+
+const examSinonimos1 = [
+  ['abolir','aglutinar','asiento','base','endeble','filtrar','extranjero','ficticio','ilusionante','caótico'],
+  ['revocar','reunir','base','fundamento','frágil','depurar','foráneo','fílmico','viable','desordenado']
+];
+const examSinonimos2 = [
+  ['áspero','copioso','difundir','variable','custodiar','favorable','adular','dependiente','remoto','infrecuente'],
+  ['tosco','exuberante','pregonar','voluble','vigilante','propicio','elogiar','subordinado','lejano','esporádico']
+];
+const examAntonimos1 = [
+  ['adulto','espera','extraer','certificado','constante','copioso','decidido','delicado','desatender','difamar'],
+  ['novel','prisa','penetrar','inválido','voluble','precario','indeciso','fuerte','vigilar','pregonar']
+];
+const examAntonimos2 = [
+  ['arduo','auténtico','autóctono','disgregar','inadvertido','ratificar','novel','obtuso','cumbre','fuerte'],
+  ['fácil','ficticio','foráneo','reunir','notorio','revocar','veterano','inteligente','base','endeble']
+];
+
+function startExamPart(part) {
+  const area = document.getElementById('exam-area');
+  if(part === 'tildes-exam') {
+    area.innerHTML = `
+      <div class="card">
+        <h3>Parte 1: Ponga las tildes necesarias en el texto</h3>
+        <p style="font-family:sans-serif;font-size:0.82rem;color:var(--text2);margin-bottom:1rem">Se descuenta 0.50 por cada tilde puesta donde no corresponde.</p>
+        <div class="exam-text" id="tilde-text"></div>
+        <div style="margin-top:1rem;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="checkTildes()">Verificar tildes</button>
+          <button class="btn-secondary" onclick="resetTildes()">Reiniciar</button>
+        </div>
+        <div id="tilde-result" style="margin-top:1rem"></div>
+      </div>`;
+    renderTildesExam();
+  } else if(part === 'palabras-exam') {
+    area.innerHTML = `<div class="card"><h3>Parte 2: Clasificación de palabras</h3><p style="font-family:sans-serif;font-size:0.84rem;color:var(--text2);margin-bottom:1rem">Haz clic en "Ver" para revelar cada respuesta.</p>`;
+    const div = document.createElement('div');
+    div.id = 'pe-inline';
+    area.querySelector('.card').appendChild(div);
+    area.querySelector('.card').innerHTML += '</div>';
+    renderPalabrasQuiz([...palabrasExamen1,...palabrasExamen2], 'pe-inline');
+  } else if(part === 'homo-exam') {
+    area.innerHTML = `<div class="card"><h3>Parte 3: Escribe una oración con cada palabra</h3><p style="font-family:sans-serif;font-size:0.84rem;color:var(--text2);margin-bottom:1rem">Escribe la oración y luego haz clic en "Ver ejemplo" para comparar.</p>`;
+    const homoWords = ['Sabía','Cavo','Bacilo','Abrasar','Rebelar','Rasa','Cesión','Haz','Errar','Prejuicio','Sabia','A ser','Meza','Halla','Segar','Habría','Aprehender','Resiente'];
+    const homoAnswers = {
+      'Sabía':'Era una mujer muy sabía, conocía la respuesta a todo. (sabía = verbo saber)',
+      'Cavo':'El jardinero cavo un hoyo en el jardín para plantar el árbol. (cavo = verbo cavar)',
+      'Bacilo':'El bacilo de Koch es la bacteria que causa la tuberculosis. (bacilo = microbio)',
+      'Abrasar':'La fiebre alta puede abrasar la piel del paciente. (abrasar = quemar)',
+      'Rebelar':'Los estudiantes decidieron rebelarse contra la injusticia. (rebelar = sublevar)',
+      'Rasa':'La enfermera rasa la superficie de la herida con cuidado. (rasa = verbo rasar)',
+      'Cesión':'La cesión de los derechos se firmó ante notario. (cesión = acto de ceder)',
+      'Haz':'Haz la tarea antes de salir a jugar. (haz = imperativo de hacer)',
+      'Errar':'Es humano errar, pero hay que aprender de los errores. (errar = equivocarse)',
+      'Prejuicio':'El prejuicio racial impide una convivencia sana. (prejuicio = juicio previo)',
+      'Sabia':'La sabia doctora encontró la cura en poco tiempo. (sabia = adj. con sabiduría)',
+      'A ser':'Vamos a ser los mejores en este proyecto. (a ser = algo que ocurre)',
+      'Meza':'La madre meza al bebé para que se duerma. (meza = verbo mecer)',
+      'Halla':'La investigadora halla evidencia en el laboratorio. (halla = verbo hallar)',
+      'Segar':'Los agricultores segan el campo antes de la lluvia. (segar = cosechar)',
+      'Habría':'Habría sido ideal llegar más temprano a la reunión. (habría = condicional de haber)',
+      'Aprehender':'Las autoridades lograron aprehender al sospechoso. (aprehender = capturar)',
+      'Resiente':'Él se resiente de las críticas que le hacen sus colegas. (resiente = verbo resentir)',
+    };
+    let html = '<div style="overflow-x:auto"><table><thead><tr><th>Palabra</th><th>Tu oración</th><th>Ejemplo</th></tr></thead><tbody>';
+    homoWords.forEach(w => {
+      html += `<tr><td><strong>${w}</strong></td><td><input type="text" placeholder="Escribe aquí..." style="width:100%;min-width:150px"></td><td><span class="quiz-btn" onclick="this.textContent='${homoAnswers[w].replace(/'/g,"\\'")}';this.style.background='var(--green-light)';this.style.color='var(--green-dark)';this.style.cursor='default'">Ver ejemplo</span></td></tr>`;
+    });
+    html += '</tbody></table></div>';
+    area.querySelector('.card').innerHTML += html;
+  } else if(part === 'sin-exam') {
+    renderMatchingExam('sinonimos', examSinonimos1, examSinonimos2);
+  } else if(part === 'ant-exam') {
+    renderMatchingExam('antonimos', examAntonimos1, examAntonimos2);
+  }
+}
+
+function renderMatchingExam(type, set1, set2) {
+  const area = document.getElementById('exam-area');
+  const label = type==='sinonimos'?'Sinónimos':'Antónimos';
+  area.innerHTML = `
+    <div class="card">
+      <h3>Parte ${type==='sinonimos'?4:5}: Emparejar ${label}</h3>
+      <p style="font-family:sans-serif;font-size:0.84rem;color:var(--text2);margin-bottom:1rem">Selecciona el examen:</p>
+      <div style="display:flex;gap:8px;margin-bottom:1rem">
+        <button class="btn-secondary" onclick="renderMatchGame('${type}',0)">Práctica #1</button>
+        <button class="btn-secondary" onclick="renderMatchGame('${type}',1)">Práctica #2</button>
+      </div>
+      <div id="match-game"></div>
+    </div>`;
+  window._matchSets = {sinonimos:[set1,set2], antonimos:[examAntonimos1,examAntonimos2]};
+}
+
+function renderMatchGame(type, setIdx) {
+  const sets = window._matchSets[type];
+  const s = sets[setIdx];
+  const pairs = s[0].map((w,i)=>[w,s[1][i]]);
+  const left = [...s[0]];
+  const right = shuffle([...s[1]]);
+  window._mgPairs = pairs;
+  window._mgSel = null;
+  window._mgMatched = [];
+  const c = document.getElementById('match-game');
+  c.innerHTML = `
+    <p style="font-family:sans-serif;font-size:0.84rem;margin-bottom:12px">Haz clic en una palabra de cada columna para emparejarlas.</p>
+    <div id="mg-feedback" style="margin-bottom:8px"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div>${left.map(w=>`<div class="word-pill" id="mgl-${w.replace(/\s/g,'_')}" onclick="mgSelect('left','${w.replace(/\s/g,'_')}')">${w}</div>`).join('')}</div>
+      <div>${right.map(w=>`<div class="word-pill" id="mgr-${w.replace(/\s/g,'_')}" onclick="mgSelect('right','${w.replace(/\s/g,'_')}')" style="background:var(--teal-light);color:var(--teal-dark)">${w}</div>`).join('')}</div>
+    </div>
+    <div id="mg-score" style="margin-top:1rem;font-family:sans-serif;font-size:0.85rem"></div>`;
+}
+function mgSelect(side, wordRaw) {
+  const word = wordRaw.replace(/_/g,' ');
+  if(window._mgMatched.includes(word)) return;
+  if(side==='left') {
+    if(window._mgSel) { const p=window._mgSel.word.replace(/\s/g,'_'); document.getElementById('mgl-'+p)?.classList.remove('selected'); }
+    window._mgSel = {side:'left',word};
+    document.getElementById('mgl-'+wordRaw)?.classList.add('selected');
+  } else {
+    if(!window._mgSel || window._mgSel.side!=='left') return;
+    const lw = window._mgSel.word;
+    const pair = window._mgPairs.find(p=>p[0]===lw||p[1]===lw);
+    const isMatch = pair && ((pair[0]===lw&&pair[1]===word)||(pair[1]===lw&&pair[0]===word));
+    const lwk = lw.replace(/\s/g,'_');
+    document.getElementById('mgl-'+lwk)?.classList.remove('selected');
+    if(isMatch) {
+      document.getElementById('mgl-'+lwk)?.classList.add('matched');
+      document.getElementById('mgr-'+wordRaw)?.classList.add('matched');
+      window._mgMatched.push(lw,word);
+      window._mgSel = null;
+      document.getElementById('mg-feedback').innerHTML = `<div class="feedback correct" style="display:inline-block">✅ ¡Correcto!</div>`;
+      if(window._mgMatched.length >= window._mgPairs.length*2) document.getElementById('mg-score').innerHTML = `<strong>🎉 ¡Todas las parejas encontradas!</strong>`;
+    } else {
+      document.getElementById('mg-feedback').innerHTML = `<div class="feedback wrong" style="display:inline-block">❌ No corresponden. Intenta de nuevo.</div>`;
+      window._mgSel = null;
+    }
+  }
+}
+
+// Tildes exam
+function renderTildesExam() {
+  const words = examTildesText.split(' ');
+  const needTilde = {
+    'Que':'Qué', 'adaptacion':'adaptación', 'version':'versión', 'clasicos':'clásicos',
+    'mas':'más', 'cinematograficas':'cinematográficas', 'raida':'raída'
+  };
+  let html = '';
+  words.forEach((w, i) => {
+    const clean = w.replace(/[¿?.,;:]/g,'');
+    const prefix = w.startsWith('¿')?'¿':'';
+    const suffix = w.match(/[?.,;:]/)?w.match(/[?.,;:]/)[0]:'';
+    if(needTilde[clean]) {
+      html += `${prefix}<span class="blank" id="tb-${i}" data-orig="${clean}" data-correct="${needTilde[clean]}" onclick="toggleTilde(this)">${clean}</span>${suffix} `;
+    } else {
+      html += w + ' ';
+    }
+  });
+  document.getElementById('tilde-text').innerHTML = html;
+}
+function toggleTilde(el) {
+  const correct = el.dataset.correct;
+  if(el.textContent === el.dataset.orig) { el.textContent = correct; el.style.background='var(--amber-light)'; el.style.color='var(--amber-dark)'; }
+  else { el.textContent = el.dataset.orig; el.style.background=''; el.style.color=''; }
+}
+function checkTildes() {
+  let correct = 0, total = 0, wrong = 0;
+  document.querySelectorAll('.blank[data-correct]').forEach(el => {
+    total++;
+    if(el.textContent === el.dataset.correct) { correct++; el.classList.add('correct'); el.classList.remove('wrong'); }
+    else if(el.textContent !== el.dataset.orig) { wrong++; el.classList.add('wrong'); }
+    else { el.classList.add('wrong'); }
+  });
+  document.getElementById('tilde-result').innerHTML = `
+    <div class="feedback ${correct===total?'correct':'wrong'}">
+      Correctas: ${correct}/${total} | Sin poner: ${total-correct-wrong} | Incorrectas: ${wrong}
+      <br><small>Las tildes que faltan aparecen en rojo. Las correctas en verde.</small>
+    </div>`;
+  // reveal missing
+  document.querySelectorAll('.blank[data-correct]').forEach(el => {
+    if(!el.classList.contains('correct')) {
+      el.textContent = el.dataset.correct;
+      el.classList.add('wrong');
+    }
+  });
+}
+function resetTildes() {
+  document.querySelectorAll('.blank[data-correct]').forEach(el => {
+    el.textContent = el.dataset.orig;
+    el.classList.remove('correct','wrong');
+    el.style.background=''; el.style.color='';
+  });
+  document.getElementById('tilde-result').innerHTML = '';
+}
+</script>
+
+<script>
+// ===== CORRECCIONES FINALES GPT =====
+(function(){
+  const P1 = [
+    {word:'Glúteo', vocal:'ú (glú-)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre porque la fuerza cae en la antepenúltima sílaba.'},
+    {word:'Moaís', vocal:'í (Mo-a-ís)', tipo:'Aguda', razon:'Lleva tilde por ley del hiato: í débil tónica junto a vocal fuerte; además termina en -s.'},
+    {word:'Poplítea', vocal:'í (po-plí-te-a)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre.'},
+    {word:'Peroneas', vocal:'e (pe-ro-ne-as)', tipo:'Grave', razon:'Grave terminada en -s: no lleva tilde.'},
+    {word:'Juez', vocal:'e (juez)', tipo:'Aguda', razon:'Aguda terminada en -z, consonante distinta de n o s: no lleva tilde.'},
+    {word:'Femoral', vocal:'a (fe-mo-ral)', tipo:'Aguda', razon:'Aguda terminada en -l, consonante distinta de n o s: no lleva tilde.'},
+    {word:'Tahúr', vocal:'ú (ta-húr)', tipo:'Aguda', razon:'Lleva tilde por ley del hiato: ú débil tónica junto a vocal fuerte.'},
+    {word:'Cartografía', vocal:'í (car-to-gra-fí-a)', tipo:'Grave', razon:'Grave; lleva tilde por ley del hiato: í débil tónica junto a a.'},
+    {word:'Fríalo', vocal:'í (frí-a-lo)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre.'},
+    {word:'Ilíaca', vocal:'í (i-lí-a-ca)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre.'},
+    {word:'Diagnóstico', vocal:'ó (diag-nós-ti-co)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre.'},
+    {word:'Agorafobia', vocal:'o (a-go-ra-fo-bia)', tipo:'Grave', razon:'Grave terminada en vocal: no lleva tilde.'}
+  ];
+  const P2 = [
+    {word:'Crego', vocal:'e (cre-go)', tipo:'Grave', razon:'Grave terminada en vocal: no lleva tilde.'},
+    {word:'Taipéi', vocal:'é (tai-péi)', tipo:'Aguda', razon:'Aguda terminada en vocal: lleva tilde.'},
+    {word:'Récords', vocal:'é (ré-cords)', tipo:'Grave', razon:'No es esdrújula. Es grave porque el acento cae en la penúltima sílaba; lleva tilde porque termina en grupo consonántico (-ds).'},
+    {word:'Tráemelo', vocal:'á (trá-e-me-lo)', tipo:'Sobreesdrújula', razon:'Sobreesdrújula formada por verbo + pronombres; lleva tilde siempre.'},
+    {word:'Fluir', vocal:'u (fluir)', tipo:'Aguda', razon:'Diptongo ui; termina en -r: no lleva tilde.'},
+    {word:'Laparoscopia', vocal:'o (la-pa-ros-co-pia)', tipo:'Grave', razon:'Grave terminada en vocal: no lleva tilde.'},
+    {word:'Calíope', vocal:'í (ca-lí-o-pe)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre.'},
+    {word:'Ovías', vocal:'í (o-ví-as)', tipo:'Grave', razon:'Grave; lleva tilde por ley del hiato: í débil tónica junto a vocal fuerte.'},
+    {word:'Electroencefalografía', vocal:'í (...gra-fí-a)', tipo:'Grave', razon:'Grave; lleva tilde por ley del hiato: í débil tónica junto a a.'},
+    {word:'Abstraído', vocal:'í (abs-tra-í-do)', tipo:'Grave', razon:'Grave; lleva tilde por ley del hiato: í débil tónica rompe el diptongo.'},
+    {word:'Práctica', vocal:'á (prác-ti-ca)', tipo:'Esdrújula', razon:'Esdrújula: lleva tilde siempre.'},
+    {word:'Rápidamente', vocal:'á (rá-pi-da-men-te)', tipo:'Terminada en -mente', razon:'No se clasifica como sobreesdrújula; conserva la tilde porque rápida la lleva.'},
+    {word:'Continúe', vocal:'ú (con-ti-nú-e)', tipo:'Grave', razon:'Grave; lleva tilde por ley del hiato: ú débil tónica junto a e.'}
+  ];
+  const extrasSin = [['ágil','veloz','Rápido, con agilidad'],['alegre','jubiloso','Lleno de alegría'],['antiguo','arcaico','De tiempos pasados'],['comenzar','iniciar','Dar principio a algo'],['conciso','breve','Corto, sin rodeos'],['decidido','resuelto','Que decide sin dudar'],['errado','incorrecto','Equivocado'],['esforzado','diligente','Que trabaja con empeño'],['fingir','aparentar','Hacer creer algo que no es'],['habitual','cotidiano','Que ocurre con frecuencia'],['impedimento','obstáculo','Algo que impide avanzar'],['lúcido','perspicaz','Que razona con claridad'],['novedoso','innovador','Que trae algo nuevo'],['oculto','clandestino','Escondido o secreto'],['peligroso','riesgoso','Que supone un riesgo']];
+  const extrasAnt = [['aceptar','rechazar','Aprobar / denegar'],['activo','pasivo','En movimiento / inactivo'],['alabar','criticar','Elogiar / señalar defectos'],['claro','oscuro','Con luz / sin luz o confuso'],['construir','destruir','Edificar / demoler'],['culpable','inocente','Con culpa / sin culpa'],['empezar','terminar','Iniciar / finalizar'],['ficticio','real','Inventado / verdadero'],['generoso','tacaño','Que da mucho / que da poco'],['lento','veloz','Sin rapidez / muy rápido'],['noble','villano','De buenas cualidades / de malas cualidades'],['optimista','pesimista','Ve lo positivo / ve lo negativo'],['pacífico','belicoso','Que evita el conflicto / que lo busca'],['próximo','lejano','Cerca / lejos'],['valiente','cobarde','Sin miedo / con miedo']];
+  function makeTable(rows, headers){ const wrap=document.createElement('div'); wrap.style.overflowX='auto'; const t=document.createElement('table'); const thead=t.createTHead(); const tr=thead.insertRow(); headers.forEach(h=>{const th=document.createElement('th'); th.textContent=h; tr.appendChild(th)}); const tb=t.createTBody(); rows.forEach(r=>{const tr=tb.insertRow(); r.forEach(x=>{const td=tr.insertCell(); td.textContent=x;});}); wrap.appendChild(t); return wrap; }
+  function renderPalabras(data, id){ const c=document.getElementById(id); if(!c) return; c.innerHTML=''; const wrap=document.createElement('div'); wrap.style.overflowX='auto'; const t=document.createElement('table'); t.innerHTML='<thead><tr><th>Palabra</th><th>Vocal acentuada</th><th>Clasificación</th><th>Razón</th></tr></thead>'; const tb=t.createTBody(); data.forEach(p=>{ const tr=tb.insertRow(); const td0=tr.insertCell(); td0.innerHTML='<strong></strong>'; td0.firstChild.textContent=p.word; ['vocal','tipo','razon'].forEach(k=>{ const td=tr.insertCell(); const b=document.createElement('button'); b.className='quiz-btn'; b.textContent='Ver'; b.style.padding='2px 8px'; b.addEventListener('click',()=>{b.textContent=p[k]; b.classList.add('correct');}); td.appendChild(b); }); }); wrap.appendChild(t); c.appendChild(wrap); const all=document.createElement('button'); all.className='btn-secondary'; all.textContent='Revelar todo'; all.onclick=()=>c.querySelectorAll('button.quiz-btn').forEach(b=>b.click()); c.appendChild(all); }
+  window.renderPalabrasQuiz = function(data, id){ if(id==='palabras-examen-quiz') renderPalabras(P1,id); else if(id==='palabras-examen2-quiz') renderPalabras(P2,id); else renderPalabras(data,id); };
+  renderPalabras(P1,'palabras-examen-quiz'); renderPalabras(P2,'palabras-examen2-quiz');
+  function addExtra(sectionId,title,rows){ const sec=document.getElementById(sectionId); if(!sec || sec.dataset.extras==='1') return; sec.dataset.extras='1'; const h=document.createElement('h3'); h.textContent=title; h.style.marginTop='1rem'; sec.insertBefore(h, sec.querySelector('hr.divider')); sec.insertBefore(makeTable(rows,['Palabra','Respuesta','Explicación']), sec.querySelector('hr.divider')); }
+  addExtra('sinonimos','Sinónimos adicionales para practicar',extrasSin); addExtra('antonimos','Antónimos adicionales para practicar',extrasAnt);
+  function multiQuiz(containerId, data){ let i=0, score=0; const c=document.getElementById(containerId); function draw(){ if(!c)return; c.innerHTML=''; if(i>=data.length){c.innerHTML=`<div class="card card-accent-teal"><h3>¡Quiz completado!</h3><p style="font-family:sans-serif">Puntaje: <strong>${score}/${data.length}</strong></p></div>`; return;} const q=data[i]; const card=document.createElement('div'); card.className='card'; card.innerHTML=`<div class="stats-row"><div class="stat-card"><div class="n">${i+1}/${data.length}</div><div class="l">pregunta</div></div><div class="stat-card"><div class="n">${score}</div><div class="l">correctas</div></div></div><p style="font-family:sans-serif;font-size:1rem;line-height:1.7;margin-bottom:1rem"></p><div class="opts" style="display:flex;gap:8px;flex-wrap:wrap"></div><div class="fb" style="margin-top:10px"></div>`; card.querySelector('p').textContent=q.q||q.sentence; q.options.forEach(opt=>{const b=document.createElement('button'); b.className='quiz-btn'; b.textContent=opt; b.onclick=()=>{card.querySelectorAll('button').forEach(x=>x.disabled=true); const ok=opt===q.answer; if(ok){score++; b.classList.add('correct')} else {b.classList.add('wrong'); [...card.querySelectorAll('button')].find(x=>x.textContent===q.answer)?.classList.add('reveal')} card.querySelector('.fb').innerHTML=`<div class="feedback ${ok?'correct':'wrong'}">${ok?'✅ Correcto.':'❌ Incorrecto.'} ${q.reason}</div>`; setTimeout(()=>{i++; draw();},1800)}; card.querySelector('.opts').appendChild(b)}); c.appendChild(card);} draw(); }
+  multiQuiz('homofonos-quiz', [
+    {sentence:'Vamos ____ los mejores en este proyecto.', options:['a ser','hacer'], answer:'a ser', reason:'A ser indica algo que va a ocurrir; hacer significa producir.'},
+    {sentence:'La doctora era muy ____ y sabía la respuesta.', options:['sabia','savia'], answer:'sabia', reason:'Sabia significa con sabiduría; savia es el jugo de las plantas.'},
+    {sentence:'Las autoridades lograron ____ al sospechoso.', options:['aprehender','aprender'], answer:'aprehender', reason:'Aprehender significa capturar; aprender significa adquirir conocimiento.'},
+    {sentence:'La madre ____ al bebé para que se durmiera.', options:['meza','mesa'], answer:'meza', reason:'Meza es del verbo mecer; mesa es un mueble.'},
+    {sentence:'La investigadora ____ evidencia en el laboratorio.', options:['halla','haya'], answer:'halla', reason:'Halla significa encuentra; haya corresponde al verbo haber.'},
+    {sentence:'____ la tarea antes de salir.', options:['Haz','Has'], answer:'Haz', reason:'Haz es imperativo de hacer; has es del verbo haber.'},
+    {sentence:'Los agricultores ____ el campo.', options:['segan','cegan'], answer:'segan', reason:'Segar es cortar hierba o cosechar; cegar es dejar sin vista.'},
+    {sentence:'El ____ de Koch causa la tuberculosis.', options:['bacilo','vacilo'], answer:'bacilo', reason:'Bacilo es una bacteria; vacilo es del verbo vacilar.'}
+  ]);
+  multiQuiz('paronimos-quiz', [
+    {sentence:'Tiene mucha ____ para la música.', options:['aptitud','actitud'], answer:'aptitud', reason:'Aptitud es habilidad; actitud es disposición.'},
+    {sentence:'Le causó un gran ____ económico.', options:['perjuicio','prejuicio'], answer:'perjuicio', reason:'Perjuicio es daño; prejuicio es juicio previo.'},
+    {sentence:'Fue detenido en ____ delito.', options:['flagrante','fragante'], answer:'flagrante', reason:'Flagrante es evidente; fragante es oloroso.'},
+    {sentence:'El paciente ____ a medianoche.', options:['expiró','espiró'], answer:'expiró', reason:'Expirar puede significar morir; espirar es exhalar.'}
+  ]);
+  multiQuiz('comunicacion-quiz', [
+    {sentence:'¿Diferencia principal entre comunicación y expresión?', options:['Comunicación es bidireccional; expresión es unidireccional','Expresión siempre requiere receptor','Comunicación no espera respuesta'], answer:'Comunicación es bidireccional; expresión es unidireccional', reason:'La comunicación espera respuesta; la expresión solo exterioriza algo.'},
+    {sentence:'¿Qué confirma si el mensaje fue entendido?', options:['Retroalimentación','Ruido','Canal'], answer:'Retroalimentación', reason:'La retroalimentación es la respuesta del receptor.'},
+    {sentence:'¿Qué contexto trata el estado emocional?', options:['Psicológico','Físico','Social'], answer:'Psicológico', reason:'El contexto psicológico incluye emociones, estrés y motivación.'}
+  ]);
+  multiQuiz('diptongo-quiz', [
+    {sentence:'país', options:['diptongo','hiato','triptongo'], answer:'hiato', reason:'La í débil tónica rompe el diptongo.'},
+    {sentence:'aire', options:['diptongo','hiato','triptongo'], answer:'diptongo', reason:'a + i en la misma sílaba.'},
+    {sentence:'buey', options:['diptongo','hiato','triptongo'], answer:'triptongo', reason:'u + e + y en una misma sílaba.'}
+  ]);
+  // Arreglar datos de matching para que incluya palabras adicionales en los quizzes
+  window.sinonimosData = [['abolir','revocar'],['aglutinar','reunir'],['endeble','frágil'],['filtrar','depurar'],['extranjero','foráneo'],['caótico','desordenado'],['áspero','tosco'],['copioso','exuberante'],['difundir','pregonar'],['variable','voluble'],['favorable','propicio'],['adular','elogiar'],['dependiente','subordinado'],['remoto','lejano'],['infrecuente','esporádico'],...extrasSin.map(x=>[x[0],x[1]])];
+  window.antonimosData = [['adulto','novel'],['espera','prisa'],['extraer','penetrar'],['copioso','precario'],['decidido','indeciso'],['delicado','fuerte'],['desatender','vigilar'],['arduo','fácil'],['auténtico','ficticio'],['autóctono','foráneo'],['disgregar','reunir'],['ratificar','revocar'],['obtuso','inteligente'],['cumbre','base'],...extrasAnt.map(x=>[x[0],x[1]])];
+})();
+</script>
+</body>
+</html>
